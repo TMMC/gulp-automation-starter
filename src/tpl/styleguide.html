@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <!-- Basic meta: the 3 meta tags below *must* come first in the head -->
+  <meta charset="utf-8" />
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" />  --> <!-- moved to .htaccess -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" /> --> <!-- disable zooming capabilities on mobile devices -->
+  <!-- <meta name="format-detection" content="telephone=no" />  --> <!-- disable phone number auto-linking while still allowing phone number links using "tel://" (for both Android and iPhone) -->
+
+  <!-- SEO meta -->
+  <title>Style Guide</title>
+  <meta name="description" content="Project style guide." />
+  <meta name="keywords" content="" />
+  <meta name="robots" content="noindex,nofollow" /> <!-- content="all" in production -->
+  <!-- <meta name="google-site-verification" content="" /> -->
+
+  <!-- Open graph tags: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url" content="http://www.domain.com/page.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Style Guide" />
+  <meta property="og:description" content="Project style guide." />
+  <meta property="og:image" content="http://www.domain.com/path/image.jpg" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.min.css" />
+  <link rel="stylesheet" href="assets/css/styleguide.min.css" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target="#sg-masthead">
+  <a id="skip-link" href="#content">Skip to main content</a>
+  <!--[if lt IE 9]>
+    <div id="warning-ie-outdated" class="alert alert-dismissible" role="alert">
+      <p>You are using a <strong>really outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <button type="button" class="close" data-dismiss="alert" title="Close this message">
+        <i aria-hidden="true">&times;</i>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
+  <![endif]-->
+  <header class="navbar navbar-default navbar-fixed-top" id="sg-masthead">
+    <div class="container">
+      <h1 class="navbar-header"><a class="navbar-brand" href="#">Project Style Guide</a></h1>
+      <nav class="navbar-right">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Available components <b class="caret"></b></a>
+            <ul class="dropdown-menu dropdown-split dropdown-split-2">
+              <li class="dropdown-col">
+                <ul>
+                  <li><a href="#sg-colors">Colors</a></li>
+                  <li><a href="#sg-typography">Typography</a></li>
+                  <li><a href="#sg-font-stacks">Fonts</a></li>
+                  <li><a href="#sg-headings">Headings</a></li>
+                  <li><a href="#sg-text-elements">Text elements</a></li>
+                  <li><a href="#sg-address">Addresses</a></li>
+                  <li><a href="#sg-contextual-colors">Contextual colors and backgrounds</a></li>
+                  <li><a href="#sg-blockquote">Blockquotes</a></li>
+                  <li><a href="#sg-lists">Lists</a></li>
+                  <li><a href="#sg-description-lists">Description lists</a></li>
+                  <li><a href="#sg-code">Code</a></li>
+                  <li><a href="#sg-tables">Tables</a></li>
+                  <li><a href="#sg-forms">Forms</a></li>
+                  <li><a href="#sg-form-controls">Form controls</a></li>
+                  <li><a href="#sg-buttons">Buttons</a></li>
+                  <li><a href="#sg-buttons-groups">Buttons groups and dropdowns</a></li>
+                  <li><a href="#sg-images">Images</a></li>
+                  <li><a href="#sg-responsive-embeds">Responsive embeds</a></li>
+                </ul>
+              </li><!--/ .dropdown-col -->
+              <li class="dropdown-col">
+                <ul>
+                  <li><a href="#sg-navs">Navs</a></li>
+                  <li><a href="#sg-navbar">Navbar</a></li>
+                  <li><a href="#sg-breadcrumbs">Breadcrumbs</a></li>
+                  <li><a href="#sg-pagination">Pagination</a></li>
+                  <li><a href="#sg-pager">Pager</a></li>
+                  <li><a href="#sg-badges">Badges</a></li>
+                  <li><a href="#sg-labels">Labels</a></li>
+                  <li><a href="#sg-page-header">Page header</a></li>
+                  <li><a href="#sg-jumbotron">Jumbotron</a></li>
+                  <li><a href="#sg-carousel">Carousel</a></li>
+                  <li><a href="#sg-thumbnails">Thumbnails</a></li>
+                  <li><a href="#sg-alerts">Alerts</a></li>
+                  <li><a href="#sg-well">Wells</a></li>
+                  <li><a href="#sg-progress-bars">Progress bars</a></li>
+                  <li><a href="#sg-media-object">Media object</a></li>
+                  <li><a href="#sg-list-groups">List groups</a></li>
+                  <li><a href="#sg-panels">Panels</a></li>
+
+                  <li><a href="#sg-js">Some JavaScript components</a></li>
+                </ul>
+              </li><!--/ .dropdown-col -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header><!--/ .navbar -->
+  <main class="container" id="content" tabindex="-1" role="main">
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-colors">
+        <h1>Colors</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-6 col-lg-6">
+        <h2 class="sg-h1">Grayscale</h2>
+        <div class="sg-color sg-gray-lighter"><span class="sg-color-swatch"><span>#57DAE6</span></span>
+        </div>
+        <div class="sg-color sg-gray-light"><span class="sg-color-swatch"><span>#57DAE6</span></span>
+        </div>
+        <div class="sg-color sg-gray"><span class="sg-color-swatch"><span>#57DAE6</span></span>
+        </div>
+        <div class="sg-color sg-gray-dark"><span class="sg-color-swatch"><span>#4dd3c9</span></span>
+        </div>
+        <div class="sg-color sg-gray-darker"><span class="sg-color-swatch"><span>#339db0</span></span>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <h2 class="sg-h1">Complementary</h2>
+        <div class="sg-color sg-brand-primary"><span class="sg-color-swatch"><span>#57DAE6</span></span>
+        </div>
+        <div class="sg-color sg-brand-success"><span class="sg-color-swatch"><span>#384355</span></span>
+        </div>
+        <div class="sg-color sg-brand-warning"><span class="sg-color-swatch"><span>#384355</span></span>
+        </div>
+        <div class="sg-color sg-brand-danger"><span class="sg-color-swatch"><span>#384355</span></span>
+        </div>
+        <div class="sg-color sg-brand-info"><span class="sg-color-swatch"><span>#384355</span></span>
+        </div>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-typography">
+        <h1>Typography</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-12 col-lg-12">
+        <h2 class="sg-h1" id="sg-font-stacks">Font stacks</h2>
+        <p class="sg-font sg-font-primary">LatoWeb, "HelveticaNeue", "Helvetica", Arial, sans-serif;</p>
+        <p class="sg-font sg-font-secondary">Georgia, Times, "Times New Roman", serif;</p>
+        <p class="sg-font sg-font-monospace">Menlo, Monaco, Consolas, "Courier New", monospace</p>
+      </div><!--/ .col -->
+      <h2 class="clearfix col-md-12 col-lg-12 sg-h1" id="sg-headings">Headings</h2><!--/ .col -->
+      <div class="col-md-7 col-lg-7">
+        <h1>h1. Bootstrap heading <small>with smaller subtext</small></h1>
+        <h2>h2. Bootstrap heading <small>with smaller subtext</small></h2>
+      </div><!--/ .col -->
+      <div class="col-md-5 col-lg-5">
+        <h3>h3. Bootstrap heading <small>with smaller subtext</small></h3>
+        <h4>h4. Bootstrap heading <small>with smaller subtext</small></h4>
+        <h5>h5. Bootstrap heading <small>with smaller subtext</small></h5>
+        <h6>h6. Bootstrap heading <small>with smaller subtext</small></h6>
+      </div><!--/ .col -->
+      <h2 class="clearfix col-md-12 col-lg-12 sg-h1" id="sg-text-elements">Text elements</h2>
+      <div class="col-md-6 col-lg-6">
+        <p class="lead">Lead paragraph: vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+        <p>Normal paragraph: nullam quis risus eget urna mollis ornare vel eu leo. The following snippets of text are
+          <strong>rendered as bold text</strong>,
+          <em>rendered as italicized text</em>,
+          <del>rendered as deleted</del>,
+          <ins>rendered as inserted</ins>,
+          <mark>rendered as highlighted/marked</mark>.
+          An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>
+          and <code>.initialism</code> can be used for initialisms like <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>.
+          And this is a <a href="#">link</a>.</p>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <p><small>This line of text is meant to be treated as fine print.</small></p>
+        <p class="small">This line of text is meant to be treated as fine print.</p>
+        <p class="text-left text-lowercase">Left aligned and lowercased text.</p>
+        <p class="text-center text-uppercase">Center aligned and uppercased text.</p>
+        <p class="text-right text-capitalize">Right aligned and capitalized text.</p>
+        <p class="text-justify">Justified text.</p>
+        <p class="text-nowrap">No wrap text.</p>
+      </div><!--/ .col -->
+      <h2 class="clearfix col-md-12 col-lg-12 sg-h1" id="sg-address">Addresses</h2>
+      <div class="col-md-6 col-lg-6">
+        <address>
+          <strong>Twitter, Inc.</strong><br />
+          795 Folsom Ave, Suite 600<br />
+          San Francisco, CA 94107<br />
+          <abbr title="Phone">P:</abbr> (123) 456-7890
+        </address>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <address>
+          <strong>Full Name</strong><br />
+          <a href="mailto:#">first.last@example.com</a>
+        </address>
+      </div><!--/ .col -->
+      <h2 class="clearfix col-md-12 col-lg-12 sg-h1" id="sg-contextual-colors">Contextual colors &amp; backgrounds</h2>
+      <div class="col-md-6 col-lg-6">
+        <p class="text-muted">Muted: Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+        <p class="text-primary">Primary: Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        <p class="text-warning">Warning: Etiam porta sem malesuada magna mollis euismod.</p>
+        <p class="text-danger">Danger: Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p class="text-success">Success: Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+        <p class="text-info">Info: Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+        <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        <p class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+        <p class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div><!--/ .col -->
+      <div class="clearfix col-md-12 col-lg-12">
+        <h2 class="sg-h1" id="sg-blockquote">Blockquotes</h2>
+        <blockquote>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus asperiores molestias magnam minus, recusandae eos est! In aliquam possimus quod nobis nisi. Minima quidem at laudantium tempore vel dolor veritatis.</p>
+        </blockquote>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <h3 class="sg-h2">Blockquote with attribution</h3>
+        <blockquote>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <h3 class="text-right sg-h2">Right aligned</h3>
+        <blockquote class="blockquote-reverse">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div><!--/ .col -->
+      <h2 class="clearfix col-md-12 col-lg-12 sg-h1" id="sg-lists">Lists</h2><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h3 class="sg-h2">Unordered</h3>
+        <ul>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Integer molestie lorem at massa</li>
+          <li>Facilisis in pretium nisl aliquet</li>
+          <li>Nulla volutpat aliquam velit
+            <ul>
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+              <li>Vestibulum laoreet porttitor sem</li>
+              <li>Ac tristique libero volutpat at</li>
+            </ul>
+          </li>
+          <li>Faucibus porta lacus fringilla vel</li>
+          <li>Aenean sit amet erat nunc</li>
+          <li>Eget porttitor lorem</li>
+        </ul>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h3 class="sg-h2">Ordered</h3>
+        <ol>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Integer molestie lorem at massa</li>
+          <li>Facilisis in pretium nisl aliquet
+            <ol>
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+            </ol>
+          </li>
+          <li>Nulla volutpat aliquam velit</li>
+          <li>Faucibus porta lacus fringilla vel
+            <ul>
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+            </ul>
+          </li>
+          <li>Aenean sit amet erat nunc</li>
+          <li>Eget porttitor lorem</li>
+        </ol>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h3 class="sg-h2">Unstyled</h3>
+        <ul class="list-unstyled">
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Integer molestie lorem at massa</li>
+          <li>Facilisis in pretium nisl aliquet</li>
+          <li>Nulla volutpat aliquam velit
+            <ul>
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+              <li>Vestibulum laoreet porttitor sem</li>
+              <li>Ac tristique libero volutpat at</li>
+            </ul>
+          </li>
+          <li>Faucibus porta lacus fringilla vel</li>
+          <li>Aenean sit amet erat nunc</li>
+          <li>Eget porttitor lorem</li>
+        </ul>
+      </div><!--/ .col -->
+      <div class="clearfix col-md-12 col-lg-12">
+        <h3 class="sg-h2">Inline</h3>
+        <ul class="list-inline">
+          <li>Lorem ipsum</li>
+          <li>Phasellus iaculis</li>
+          <li>Nulla volutpat</li>
+        </ul>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <h3 class="sg-h2" id="sg-description-lists">Description lists</h3>
+        <dl>
+          <dt>Description lists</dt>
+          <dd>A description list is perfect for defining terms.</dd>
+          <dt>Euismod</dt>
+          <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+          <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+          <dt>Malesuada porta</dt>
+          <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        </dl>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <h3 class="sg-h2">Horizontal description lists</h3>
+        <dl class="dl-horizontal">
+          <dt>Description lists</dt>
+          <dd>A description list is perfect for defining terms.</dd>
+          <dt>Euismod</dt>
+          <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+          <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+          <dt>Malesuada porta</dt>
+          <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+          <dt>Felis euismod semper eget lacinia</dt>
+          <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+        </dl>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-code">
+        <h1>Code</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-6 col-lg-6">
+        <p>Inline snippets of code: <code>&lt;code&gt;</code>,
+          input entered via keyboard ie. <kbd>cd ~/some/path</kbd>,
+          variables ie. <var>var z = x + y</var>
+          and <samp>sample output from some application</samp>.</p>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <pre>A block of code wrapped in <code>&lt;pre&gt;</code></pre>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-tables">
+        <h1>Tables</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-6 col-lg-6">
+        <div class="table-responsive">
+          <table class="table">
+            <caption>Basic table (this is optional caption)</caption>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Column heading</th>
+                <th>Column heading</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!--/ .table-responsive -->
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <caption>Table with all borders</caption>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Column heading</th>
+                <th>Column heading</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!--/ .table-responsive -->
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <caption>Striped rows</caption>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Column heading</th>
+                <th>Column heading</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!--/ .table-responsive -->
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <caption>Hover rows table</caption>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Column heading</th>
+                <th>Column heading</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!--/ .table-responsive -->
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <div class="table-responsive">
+          <table class="table table-condensed">
+            <caption>Condensed table</caption>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Column heading</th>
+                <th>Column heading</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!--/ .table-responsive -->
+        <div class="table-responsive">
+          <table class="table">
+            <caption>Colored table rows</caption>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Column heading</th>
+                <th>Column heading</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="active">
+                <th scope="row">1</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr class="success">
+                <th scope="row">2</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr class="info">
+                <th scope="row">3</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr class="warning">
+                <th scope="row">4</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr class="danger">
+                <th scope="row">5</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!--/ .table-responsive -->
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-condensed table-hover">
+            <caption>All options combined, colored individual cells.</caption>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Column heading</th>
+                <th>Column heading</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="active">
+                <th scope="row">1</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td class="success">Column content</td>
+                <td class="info">Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td class="warning">Column content</td>
+                <td class="danger">Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Column content</td>
+                <td>Column content</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!--/ .table-responsive -->
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section">
+      <header class="sg-page-header" id="sg-forms">
+        <h1>Forms</h1>
+      </header><!--/ .page-header -->
+      <form method="post" action="action" accept-charset="UTF-8" name="formNameID" id="formNameID" enctype="multipart/form-data">
+        <fieldset>
+          <legend>Legend</legend>
+          <div class="row">
+            <div class="col-md-4 col-lg-4">
+              <div class="form-group">
+                <label class="control-label" for="inputText">Text input</label>
+                <input type="email" placeholder="Text" id="inputText" name="inputText" class="form-control" />
+              </div><!--/ .form-group -->
+              <div class="form-group">
+                <label class="control-label" for="inputEmail">Email input</label>
+                <input type="email" placeholder="Email" id="inputEmail" name="inputEmail" class="form-control" />
+              </div><!--/ .form-group -->
+            </div>
+            <div class="col-md-4 col-lg-4">
+              <div class="form-group">
+                <label class="control-label" for="inputPhone">Phone input</label>
+                <input type="tel" placeholder="Phone" id="inputPhone" name="inputPhone" class="form-control" />
+              </div><!--/ .form-group -->
+              <div class="form-group">
+                <label class="control-label" for="inputPassword">Password input</label>
+                <input type="password" placeholder="Password" id="inputPassword" name="inputPassword" class="form-control" />
+              </div><!--/ .form-group -->
+            </div>
+            <div class="col-md-4 col-lg-4">
+              <div class="form-group">
+                <label class="control-label" for="inputTextarea">Textarea</label>
+                <textarea id="inputTextarea" name="inputTextarea" rows="3" class="form-control"></textarea>
+              </div><!--/ .form-group -->
+            </div><!--/ .col -->
+          </div><!--/ .row -->
+        </fieldset>
+        <fieldset class="row">
+          <div class="col-md-4 col-lg-4">
+            <div class="form-group">
+              <label class="control-label" for="select">Select</label>
+              <select id="select" name="select" class="form-control">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+                <option>Option 5</option>
+              </select>
+            </div><!--/ .form-group -->
+            <div class="form-group">
+              <label class="control-label" for="selectMulti">Multiple select</label>
+              <select id="selectMulti" name="selectMulti" class="form-control" multiple="">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+                <option>Option 5</option>
+              </select>
+            </div><!--/ .form-group -->
+          </div><!--/ .col -->
+          <div class="col-md-4 col-lg-4">
+            <p class="text-bolded mb-5">Checkboxes</p>
+            <div class="checkbox">
+              <label><input type="checkbox" name="chkbox01" id="chkbox01" value="01" checked="checked" /> Checkbox 01</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="chkbox02" id="chkbox02" value="01" /> Checkbox 02</label>
+            </div>
+            <p class="text-bolded mb-5">Inline checkboxes</p>
+            <label class="checkbox-inline"><input type="checkbox" name="chkboxInline01" id="chkboxInline01" value="01" /> Inline checkbox 01</label>
+            <label class="checkbox-inline"><input type="checkbox" name="chkboxInline02" id="chkboxInline02" value="02" checked="checked" />Inline checkbox 02</label>
+          </div><!--/ .col -->
+          <div class="col-md-4 col-lg-4">
+            <p class="text-bolded mb-5">Radios</p>
+            <div class="radio">
+              <label><input type="radio" name="radioOpts01" id="radio01" value="01" checked="checked" /> Radio 01</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="radioOpts01" id="radio02" value="02" /> Radio 02</label>
+            </div>
+            <p class="text-bolded mb-5">Inline radios</p>
+            <label class="radio-inline"><input type="radio" name="radioOptsInline01" id="radioInline01" value="01" /> Inline radio 01</label>
+            <label class="radio-inline"><input type="radio" name="radioOptsInline01" id="radioInline02" value="02" checked="checked" /> Inline radio 02</label>
+          </div><!--/ .col -->
+          <div class="col-md-4 col-lg-4">
+            <div class="form-group">
+              <label class="mt-10 control-label" for="inputFile">File input</label>
+              <input type="file" id="inputFile" name="inputFile" />
+            </div><!--/ .form-group -->
+          </div><!--/ .col -->
+          <div class="col-md-4 col-lg-4">
+            <p class="mt-10 text-bolded">Input groups with addons</p>
+            <div class="input-group">
+              <label class="input-group-addon" for="inputAddonExample">
+                <span class="sr-only">Label</span>
+                $
+              </label>
+              <input type="text" class="form-control" id="inputAddonExample" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default">Button</button>
+              </span>
+            </div><!--/ .input-group -->
+          </div><!--/ .col -->
+        </fieldset><!--/ .row -->
+        <div class="form-group">
+          <input type="reset" class="btn btn-default" value="Cancel" />
+          <input type="submit" class="btn btn-primary" value="Submit" />
+        </div><!--/ .form-group -->
+      </form>
+      <h2 class="sg-h1" id="sg-form-controls">Form controls: states and sizes</h2>
+      <form method="post" action="action">
+        <fieldset>
+          <legend>States</legend>
+          <div class="row">
+            <div class="col-md-3 col-lg-3">
+              <div class="form-group">
+                <label for="inputDisabled" class="control-label">Disabled input</label>
+                <input class="form-control" id="inputDisabled" type="text" placeholder="Disabled input" disabled="disabled" />
+              </div><!--/ .form-group -->
+              <div class="form-group">
+                <label for="inputReadonly" class="control-label">Readonly input</label>
+                <input class="form-control" id="inputReadonly" type="text" placeholder="Readonly input" readonly="readonly" />
+              </div><!--/ .form-group -->
+              <div class="form-group">
+                <label class="control-label">Pesudo/static 'control'</label>
+                <p class="form-control-static">Static control content</p>
+              </div><!--/ .form-group -->
+            </div><!--/ .col -->
+            <div class="col-md-3 col-lg-3">
+              <div class="form-group has-success">
+                <label class="control-label" for="inputSuccess">Input with success</label>
+                <input type="text" class="form-control" id="inputSuccess" aria-describedby="helpBlockSuccess" />
+                <span class="help-block" id="helpBlockSuccess">A block of help text that breaks into a new line and may extend beyond one line.</span>
+              </div><!--/ .form-group -->
+              <div class="checkbox has-success">
+                <label>
+                  <input type="checkbox" id="checkboxSuccess" value="1" /> Checkbox with success
+                </label>
+              </div>
+              <div class="radio has-success">
+                <label>
+                  <input type="radio" id="radioSuccess" name="radioStates" value="1" /> Radio with success
+                </label>
+              </div>
+            </div><!--/ .col -->
+            <div class="col-md-3 col-lg-3">
+              <div class="form-group has-warning">
+                <label class="control-label" for="inputWarning">Input with warning</label>
+                <input type="text" class="form-control" id="inputWarning" aria-describedby="helpBlockWarning" />
+                <span class="help-block" id="helpBlockWarning">A block of help text that breaks into a new line and may extend beyond one line.</span>
+              </div><!--/ .form-group -->
+              <div class="checkbox has-warning">
+                <label>
+                  <input type="checkbox" id="checkboxWarning" value="1" /> Checkbox with warning
+                </label>
+              </div>
+              <div class="radio has-warning">
+                <label>
+                  <input type="radio" id="radioWarning" name="radioStates" value="1" /> Radio with warning
+                </label>
+              </div>
+            </div><!--/ .col -->
+            <div class="col-md-3 col-lg-3">
+              <div class="form-group has-error">
+                <label class="control-label" for="inputError">Input with error</label>
+                <input type="text" class="form-control" id="inputError" aria-describedby="helpBlockError" />
+                <span class="help-block" id="helpBlockError">A block of help text that breaks into a new line and may extend beyond one line.</span>
+              </div><!--/ .form-group -->
+              <div class="checkbox has-error">
+                <label>
+                  <input type="checkbox" id="checkboxError" value="1" /> Checkbox with error
+                </label>
+              </div>
+              <div class="radio has-error">
+                <label>
+                  <input type="radio" id="radioError" name="radioStates" value="1" /> Radio with error
+                </label>
+              </div>
+            </div><!--/ .col -->
+          </div><!--/ .row -->
+        </fieldset>
+        <fieldset>
+          <legend>Sizes</legend>
+          <div class="row">
+            <div class="col-md-3 col-lg-3">
+              <input class="form-control input-lg mb-15" placeholder=".input-lg" />
+              <select class="form-control input-lg mb-15">
+                <option value="">.input-lg</option>
+              </select>
+            </div><!--/ .col -->
+            <div class="col-md-4 col-lg-4">
+              <input class="form-control mb-15" placeholder="Default input" />
+              <select class="form-control mb-15">
+                <option value="">Default select</option>
+              </select>
+            </div><!--/ .col -->
+            <div class="col-md-5 col-lg-5">
+              <input class="form-control input-sm mb-15" placeholder=".input-sm" />
+              <select class="form-control input-sm mb-15">
+                <option value="">.input-sm</option>
+              </select>
+            </div><!--/ .col -->
+          </div><!--/ .row -->
+        </fieldset>
+      </form>
+    </section><!--/ .sg-section -->
+    <section class="sg-section row">
+      <article class="col-md-6 col-lg-6">
+        <header class="sg-page-header" id="sg-buttons">
+          <h1>Buttons</h1>
+        </header><!--/ .page-header -->
+        <p><button type="button" class="btn btn-default">Default</button>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-link">Link</button></p>
+        <p><a href="#" class="btn btn-default">Default</a>
+        <a href="#" class="btn btn-primary">Primary</a>
+        <a href="#" class="btn btn-success">Success</a>
+        <a href="#" class="btn btn-info">Info</a>
+        <a href="#" class="btn btn-warning">Warning</a>
+        <a href="#" class="btn btn-danger">Danger</a>
+        <a href="#" class="btn btn-link">Link</a></p>
+        <p><input type="button" class="btn btn-default" value="Default" />
+        <input type="button" class="btn btn-primary" value="Primary" />
+        <input type="button" class="btn btn-success" value="Success" />
+        <input type="button" class="btn btn-info" value="Info" />
+        <input type="button" class="btn btn-warning" value="Warning" />
+        <input type="button" class="btn btn-danger" value="Danger" />
+        <input type="button" class="btn btn-link" value="Link" /></p>
+        <h2 class="h1">Disabled state</h2>
+        <p><button type="button" class="btn btn-default" disabled="disabled">Default</button>
+        <button type="button" class="btn btn-primary" disabled="disabled">Primary</button>
+        <button type="button" class="btn btn-success" disabled="disabled">Success</button>
+        <button type="button" class="btn btn-info" disabled="disabled">Info</button>
+        <button type="button" class="btn btn-warning" disabled="disabled">Warning</button>
+        <button type="button" class="btn btn-danger" disabled="disabled">Danger</button>
+        <button type="button" class="btn btn-link" disabled="disabled">Link</button></p>
+        <p><a href="#" class="btn btn-default disabled">Default</a>
+        <a href="#" class="btn btn-primary disabled">Primary</a>
+        <a href="#" class="btn btn-success disabled">Success</a>
+        <a href="#" class="btn btn-info disabled">Info</a>
+        <a href="#" class="btn btn-warning disabled">Warning</a>
+        <a href="#" class="btn btn-danger disabled">Danger</a>
+        <a href="#" class="btn btn-link disabled">Link</a></p>
+        <p><input type="button" class="btn btn-default" disabled="disabled" value="Default" />
+        <input type="button" class="btn btn-primary" disabled="disabled" value="Primary" />
+        <input type="button" class="btn btn-success" disabled="disabled" value="Success" />
+        <input type="button" class="btn btn-info" disabled="disabled" value="Info" />
+        <input type="button" class="btn btn-warning" disabled="disabled" value="Warning" />
+        <input type="button" class="btn btn-danger" disabled="disabled" value="Danger" />
+        <input type="button" class="btn btn-link" disabled="disabled" value="Link" /></p>
+        <h2 class="sg-h1">Active state</h2>
+        <p><button type="button" class="btn btn-primary active">Primary button</button>
+        <button type="button" class="btn btn-default active">Default button</button></p>
+        <p><a href="#" class="btn btn-primary active">Primary button</a>
+        <a href="#" class="btn btn-default active">Default button</a></p>
+        <p><input type="button" class="btn btn-default active" value="Default button" />
+        <input type="button" class="btn btn-primary active" value="Primary button" /></p>
+        <h2 class="sg-h1">Sizes</h2>
+        <p><button type="button" class="btn btn-primary btn-lg">Large</button>
+        <button type="button" class="btn btn-primary">Default</button>
+        <button type="button" class="btn btn-primary btn-sm">Small</button>
+        <button type="button" class="btn btn-primary btn-xs">Extra small</button></p>
+        <p><a href="#" class="btn btn-primary btn-lg">Large</a>
+        <a href="#" class="btn btn-primary">Default</a>
+        <a href="#" class="btn btn-primary btn-sm">Small</a>
+        <a href="#" class="btn btn-primary btn-xs">Extra small</a></p>
+        <p><input type="button" class="btn btn-primary btn-lg" value="Large" />
+        <input type="button" class="btn btn-primary" value="Default" />
+        <input type="button" class="btn btn-primary btn-sm" value="Small" />
+        <input type="button" class="btn btn-primary btn-xs" value="Extra small" /></p>
+        <h2 class="sg-h1">Block level buttons</h2>
+        <button type="button" class="btn btn-primary btn-block">Block level button</button>
+        <a href="#" class="btn btn-primary btn-block">Block level button</a>
+        <input type="button" class="btn btn-primary btn-block" value="Block level button" />
+      </article><!--/ .col -->
+      <article class="col-md-6 col-lg-6">
+        <header class="sg-page-header" id="sg-buttons-groups">
+          <h1>Button groups and dropdowns</h1>
+        </header><!--/ .page-header -->
+        <h2 class="sg-h1">Single button dropdowns</h2>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <button id="dropdownSample01" class="btn btn-default dropdown-toggle"
+            type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Default <span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownSample01">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Success <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Warning <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Danger <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+        </div><!--/ .btn-toolbar -->
+        <h2 class="sg-h1">Split button dropdowns</h2>
+        <div class="btn-toolbar">
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-default" type="button">Default</button>
+            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-primary" type="button">Primary</button>
+            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-success" type="button">Success</button>
+            <button data-toggle="dropdown" class="btn btn-success dropdown-toggle" type="button">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-info" type="button">Info</button>
+            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-warning" type="button">Warning</button>
+            <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" type="button">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-danger" type="button">Danger</button>
+            <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle" type="button">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+        </div><!--/ .btn-toolbar -->
+        <h2 class="sg-h1">Buttons toolbars</h2>
+        <div class="btn-toolbar mb-10">
+          <div class="btn-group" role="group" aria-label="Example">
+            <button class="btn btn-default" type="button">1</button>
+            <button class="btn btn-default" type="button">2</button>
+            <button class="btn btn-default" type="button">3</button>
+          </div><!--/ .btn-group -->
+          <div class="btn-group">
+            <button class="btn btn-default" type="button">4</button>
+            <button class="btn btn-default" type="button">5</button>
+            <button class="btn btn-default" type="button">6</button>
+          </div><!--/ .btn-group -->
+          <div class="btn-group">
+            <button class="btn btn-default" type="button">7</button>
+            <div class="btn-group">
+              <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"> Dropdown <span class="caret"></span> </button>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Dropdown header</li>
+                <li><a href="#">Action</a></li>
+                <li class="disabled"><a href="#">Disabled action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+          </div><!--/ .btn-group -->
+        </div><!--/ .btn-toolbar -->
+        <div class="btn-group-vertical">
+          <button class="btn btn-default" type="button">Button</button>
+          <button class="btn btn-default" type="button">Button</button>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Dropdown <span class="caret"></span> </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <button class="btn btn-default" type="button">Button</button>
+          <button class="btn btn-default" type="button">Button</button>
+        </div><!--/ .btn-group-vertical -->
+        <h2 class="sg-h1">Justified button groups</h2>
+        <div class="btn-group btn-group-justified">
+          <a class="btn btn-default" href="#">Left</a>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Middle dropdown <span class="caret"></span> </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Dropdown header</li>
+              <li><a href="#">Action</a></li>
+              <li class="disabled"><a href="#">Disabled action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!--/ .btn-group -->
+          <a class="btn btn-default" href="#">Right</a>
+        </div><!--/ .btn-group.btn-group-justified -->
+      </article><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-images">
+        <h1>Images</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-6 col-lg-6">
+        <h2 class="sg-h1">Rounded, circle and thumbnail</h2>
+        <img src="holder.js/120x100?theme=gray" class="img-rounded" alt="120x100" />
+        <img src="holder.js/120x120?theme=gray" class="img-circle" alt="120x120" />
+        <img src="holder.js/120x100?theme=gray" class="img-thumbnail" alt="120x100" />
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <h2 class="sg-h1">Responsive image</h2>
+        <img src="holder.js/1920x380?auto=yes&amp;theme=gray" class="img-responsive" alt="1920x380" />
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-responsive-embeds">
+        <h1>Responsive embeds</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-7 col-lg-7">
+        <h2 class="sg-h1">16:9 aspect ratio</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/cNAdtkSjSps?rel=0" allowfullscreen="allowfullscreen"></iframe>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-5 col-lg-5">
+        <h2 class="sg-h1">4:3 aspect ratio</h2>
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/cNAdtkSjSps?rel=0" allowfullscreen="allowfullscreen"></iframe>
+        </div>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-navs">
+        <h1>Navs</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">Tabs</h2>
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#home" id="home-tab" aria-controls="home" aria-expanded="true" role="tab" data-toggle="tab">Home</a>
+          </li>
+          <li role="presentation">
+            <a href="#profile" id="profile-tab" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+          </li>
+          <li role="presentation" class="disabled">
+            <a href="#">Disabled</a>
+          </li>
+          <li role="presentation" class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle"> Dropdown <span class="caret"></span> </a>
+            <ul class="dropdown-menu">
+              <li><a href="#dropdown1" id="dropdown1-tab" aria-controls="dropdown1" role="tab" data-toggle="tab">Action</a></li>
+              <li><a href="#dropdown2" id="dropdown2-tab" aria-controls="dropdown2" role="tab" data-toggle="tab">Another action</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="tab-content" id="tabsContent">
+          <div id="home" aria-labelledby="home-tab" class="tab-pane fade active in" role="tabpanel">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p>
+          </div>
+          <div id="profile" aria-labelledby="profile-tab" class="tab-pane fade" role="tabpanel">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+          </div>
+          <div id="dropdown1" aria-labelledby="dropdown1-tab" class="tab-pane fade" role="tabpanel">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
+          </div>
+          <div id="dropdown2" aria-labelledby="dropdown2-tab" class="tab-pane fade" role="tabpanel">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater.</p>
+          </div>
+        </div>
+        <h2 class="sg-h1">Tabs justified</h2>
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">Profile</a></li>
+          <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">Pills</h2>
+        <ul class="nav nav-pills">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">Profile</a></li>
+          <li role="presentation" class="disabled"><a href="#">Disabled</a></li>
+          <li role="presentation" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
+            Dropdown <span class="caret"></span> </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <h2 class="sg-h1">Pills Justified</h2>
+        <ul class="nav nav-pills nav-justified">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">Profile</a></li>
+          <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">Pills stacked</h2>
+        <ul class="nav nav-pills nav-stacked">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">Profile</a></li>
+          <li role="presentation" class="disabled"><a href="#">Disabled</a></li>
+          <li role="presentation" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
+            Dropdown <span class="caret"></span> </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section">
+      <header class="sg-page-header" id="sg-navbar">
+        <h1>Navbar</h1>
+      </header><!--/ .page-header -->
+      <div class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button data-target=".navbar-responsive-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Brand</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Active</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Dropdown header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-left">
+              <input placeholder="Search" class="form-control col-lg-8" type="text">
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Link</a></li>
+              <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/ .nav-collapse -->
+        </div><!--/ .container (.container-fluid) -->
+      </div><!--/ .navbar -->
+      <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Brand</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Active</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Dropdown header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-left">
+              <input placeholder="Search" class="form-control col-lg-8" type="text">
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Link</a></li>
+              <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/ .nav-collapse -->
+        </div><!--/ .container (.container-fluid) -->
+      </div><!--/ .navbar -->
+    </section><!--/ .sg-section -->
+    <section class="sg-section row">
+      <article class="col-md-4 col-lg-4">
+        <header class="sg-page-header" id="sg-breadcrumbs">
+          <h1>Breadcrumbs</h1>
+        </header><!--/ .page-header -->
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Library</a></li>
+          <li class="active">Data</li>
+        </ol>
+      </article><!--/ .col -->
+      <article class="col-md-4 col-lg-4">
+        <header class="sg-page-header" id="sg-pagination">
+          <h1>Pagination</h1>
+        </header><!--/ .page-header -->
+        <nav aria-label="...">
+          <ul class="pagination mt-0">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+          </ul>
+        </nav>
+      </article><!--/ .col -->
+      <article class="col-md-4 col-lg-4">
+        <header class="sg-page-header" id="sg-pager">
+          <h1>Pager</h1>
+        </header><!--/ .page-header -->
+        <nav aria-label="...">
+          <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="...">
+          <ul class="pager">
+            <li class="previous disabled"><a href="#"><span aria-hidden="true">←</span> Older</a></li>
+            <li class="next"><a href="#">Newer <span aria-hidden="true">→</span></a></li>
+          </ul>
+        </nav>
+      </article><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-badges">
+        <h1>Badges</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">In tabs navigation</h2>
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active"><a href="#">Home <span class="badge">42</span></a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Messages <span class="badge">3</span></a></li>
+        </ul>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">In pills navigation</h2>
+        <ul class="nav nav-pills">
+          <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+          <li role="presentation"><a href="#">Profile</a></li>
+          <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+        </ul>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">In link and button</h2>
+        <a href="#">Inbox <span class="badge">42</span></a>
+        <button class="btn btn-primary" type="button" style="margin-left: 10px;">Messages <span class="badge">3</span></button>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <article class="col-md-6 col-lg-6">
+        <header class="sg-page-header" id="sg-labels">
+          <h1>Labels</h1>
+        </header><!--/ .page-header -->
+        <p>
+          <span class="label label-default">Default</span>
+          <span class="label label-primary">Primary</span>
+          <span class="label label-success">Success</span>
+          <span class="label label-info">Info</span>
+          <span class="label label-warning">Warning</span>
+          <span class="label label-danger">Danger</span>
+        </p>
+      </article><!--/ .col -->
+      <article class="col-md-6 col-lg-6">
+        <header class="sg-page-header" id="sg-page-header">
+          <h1>Page header <small>with smaller subtext</small></h1>
+        </header>
+      </article><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <article class="col-md-6 col-lg-6">
+        <header class="sg-page-header" id="sg-jumbotron">
+          <h1>Jumbotron</h1>
+        </header><!--/ .page-header -->
+        <div class="jumbotron">
+          <h2 class="h1">Hello, world!</h2>
+          <p>A simple jumbotron for calling extra attention.</p>
+          <p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+        </div>
+      </article><!--/ .col -->
+      <article class="col-md-6 col-lg-6">
+        <header class="sg-page-header" id="sg-carousel">
+          <h1>Carousel</h1>
+        </header><!--/ .page-header -->
+        <div class="carousel slide" id="carousel-example-captions" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-captions" data-slide-to="0" class=""></li>
+            <li data-target="#carousel-example-captions" data-slide-to="1" class="active"></li>
+            <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="item">
+              <img src="holder.js/1600x860?auto=yes&amp;theme=t555" alt="1600x860" />
+              <div class="carousel-caption">
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero a pharetra.</p>
+              </div>
+            </div>
+            <div class="item active">
+              <img src="holder.js/1600x860?auto=yes&amp;theme=t666" alt="1600x860" />
+              <div class="carousel-caption">
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet consectetur.</p>
+              </div>
+            </div>
+            <div class="item">
+              <img src="holder.js/1600x860?auto=yes&amp;theme=t777" alt="1600x860" />
+              <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna scelerisque.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#carousel-example-captions" class="left carousel-control" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+          <a href="#carousel-example-captions" class="right carousel-control" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+        </div>
+      </article><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-thumbnails">
+        <h1>Thumbnails</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <a href="#" class="thumbnail">
+          <img src="holder.js/600x400?auto=yes&amp;theme=gray" alt="600x400" />
+        </a>
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <a href="#" class="thumbnail">
+          <img src="holder.js/600x400?auto=yes&amp;theme=gray" alt="600x400" />
+        </a>
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <a href="#" class="thumbnail">
+          <img src="holder.js/600x400?auto=yes&amp;theme=gray" alt="600x400" />
+        </a>
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <a href="#" class="thumbnail">
+          <img src="holder.js/600x400?auto=yes&amp;theme=gray" alt="600x400" />
+        </a>
+      </div>
+      <h2 class="col-md-12 col-lg-12 sg-h1">Thumbnails with labels and custom content</h2>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="holder.js/600x300?auto=yes&amp;theme=gray" alt="600x300" />
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida metus.</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="holder.js/600x300?auto=yes&amp;theme=gray" alt="600x300" />
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida metus.</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="holder.js/600x300?auto=yes&amp;theme=gray" alt="600x300" />
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida metus.</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-alerts">
+        <h1>Alerts</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-6 col-lg-6">
+        <div class="alert alert-dismissible alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+          <strong>Success alert!</strong> This is some text and <a href="#" class="alert-link">a link</a>.
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <div class="alert alert-dismissible alert-info" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+          <strong>Info alert!</strong> This is some text and <a href="#" class="alert-link">a link</a>.
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <div class="alert alert-dismissible alert-warning" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+          <strong>Warning alert!</strong> This is some text and <a href="#" class="alert-link">a link</a>.
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <div class="alert alert-dismissible alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+          <strong>Danger/error alert!</strong> This is some text and <a href="#" class="alert-link">a link</a>.
+        </div>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-well">
+        <h1>Wells</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-4 col-lg-4">
+        <div class="well well-sm">Small well</div>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <div class="well">Look, I'm in a well!</div>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <div class="well well-lg">Large well</div>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-progress-bars">
+        <h1>Progress bars</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">Basic</h2>
+        <div class="progress">
+          <div style="width: 60%;" class="progress-bar"></div>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">Animated</h2>
+        <div class="progress progress-striped active">
+          <div style="width: 45%" class="progress-bar"></div>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">Stacked</h2>
+        <div class="progress">
+          <div style="width: 35%" class="progress-bar progress-bar-success"></div>
+          <div style="width: 20%" class="progress-bar progress-bar-warning"></div>
+          <div style="width: 10%" class="progress-bar progress-bar-danger"></div>
+        </div>
+      </div><!--/ .col -->
+      <div class="clearfix col-md-6 col-lg-6">
+        <h2 class="sg-h1">Contextual</h2>
+        <div class="progress">
+          <div style="width: 20%" class="progress-bar progress-bar-info"></div>
+        </div>
+        <div class="progress">
+          <div style="width: 40%" class="progress-bar progress-bar-success"></div>
+        </div>
+        <div class="progress">
+          <div style="width: 60%" class="progress-bar progress-bar-warning"></div>
+        </div>
+        <div class="progress">
+          <div style="width: 80%" class="progress-bar progress-bar-danger"></div>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <h2 class="sg-h1">Striped</h2>
+        <div class="progress progress-striped">
+          <div style="width: 20%" class="progress-bar progress-bar-info"></div>
+        </div>
+        <div class="progress progress-striped">
+          <div style="width: 40%" class="progress-bar progress-bar-success"></div>
+        </div>
+        <div class="progress progress-striped">
+          <div style="width: 60%" class="progress-bar progress-bar-warning"></div>
+        </div>
+        <div class="progress progress-striped">
+          <div style="width: 80%" class="progress-bar progress-bar-danger"></div>
+        </div>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-media-object">
+        <h1>Media object</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-6 col-lg-6">
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <img alt="64x64" class="media-object" src="holder.js/64x64" />
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate tempus .
+          </div>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-6 col-lg-6">
+        <div class="media">
+          <div class="media-body text-right">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at tempus.
+          </div>
+          <div class="media-right">
+            <a href="#">
+              <img alt="64x64" class="media-object" src="holder.js/64x64" />
+            </a>
+          </div>
+        </div>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-list-groups">
+        <h1>List groups</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-3 col-lg-3">
+        <h2 class="sg-h1">Basic</h2>
+        <ul class="list-group">
+          <li class="list-group-item">Cras justo odio </li>
+          <li class="list-group-item"><span class="badge">2</span> Item with badge </li>
+          <li class="list-group-item"> Morbi leo risus </li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+        </ul>
+      </div><!--/ .col -->
+      <div class="col-md-3 col-lg-3">
+        <h2 class="sg-h1">Linked</h2>
+        <div class="list-group">
+          <a class="list-group-item active" href="#"><span class="badge">14</span> Active item with badge </a>
+          <a class="list-group-item" href="#"><span class="badge">2</span> Item with badge </a>
+          <a class="list-group-item disabled" href="#"> Disabled item </a>
+          <a class="list-group-item" href="#">Dapibus ac facilisis in</a>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-3 col-lg-3">
+        <h2 class="sg-h1">Buttons <small>+ contextual</small></h2>
+        <div class="list-group">
+          <button type="button" class="list-group-item">Button + no centextual class</button>
+          <button type="button" class="list-group-item list-group-item-success">Button + success contextual class</button>
+          <button type="button" class="list-group-item list-group-item-info">Button + info contextual class</button>
+          <button type="button" class="list-group-item list-group-item-warning">Button + warning contextual class</button>
+          <button type="button" class="list-group-item list-group-item-danger">Button + danger contextual class</button>
+          <button type="button" class="list-group-item disabled" disabled="disabled">Disabled button</button>
+          <button type="button" class="list-group-item active" disabled="disabled">Active button</button>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-3 col-lg-3">
+        <h2 class="sg-h1">With content</h2>
+        <div class="list-group">
+          <a class="list-group-item active" href="#">
+            <h4 class="list-group-item-heading">List group item heading</h4>
+            <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+          </a>
+          <a class="list-group-item" href="#">
+            <h4 class="list-group-item-heading">List group item heading</h4>
+            <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+          </a>
+          <a class="list-group-item disabled" href="#">
+            <h4 class="list-group-item-heading">List group item heading</h4>
+            <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+          </a>
+        </div>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-panels">
+        <h1>Panels</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-4 col-lg-4">
+        <div class="panel panel-default">
+          <div class="panel-body">Basic panel</div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Panel heading</div>
+          <div class="panel-body">Panel content</div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">Panel content</div>
+          <div class="panel-footer">Panel footer</div>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel default</h3>
+          </div>
+          <div class="panel-body">Panel content</div>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel primary</h3>
+          </div>
+          <div class="panel-body">Panel content</div>
+        </div>
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel success</h3>
+          </div>
+          <div class="panel-body">Panel content</div>
+        </div>
+      </div><!--/ .col -->
+      <div class="col-md-4 col-lg-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel info</h3>
+          </div>
+          <div class="panel-body">Panel content</div>
+        </div>
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel warning</h3>
+          </div>
+          <div class="panel-body">Panel content</div>
+        </div>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel danger</h3>
+          </div>
+          <div class="panel-body">Panel content</div>
+        </div>
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <section class="sg-section row">
+      <header class="sg-page-header col-md-12 col-lg-12" id="sg-js">
+        <h1>Some JavaScript components</h1>
+      </header><!--/ .page-header.col -->
+      <div class="col-md-4 col-lg-4">
+        <h2 class="sg-h1">Tooltip</h2>
+        <p>Text with some <a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip (bottom)">tooltip at the bottom</a>, more text with <a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip (top)">a tooltip at the top</a>, some more and <a href="#" data-toggle="tooltip" data-placement="left" title="Tooltip (left)"> a tooltip on the left</a> and finally <a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip (right)">a&nbsp;tooltip on the right</a>.</p>
+      </div><!--/ .col -->
+      <div class="col-md-5 col-lg-5">
+        <h2 class="sg-h1">Popover</h2>
+        <button type="button" role="button" class="btn btn-default" data-toggle="popover" data-container="body"  data-placement="top" title="Popover at the top" data-content="Sit nisi sint irure magna pariatur id culpa reprehenderit irure.">Popover (click to toggle)</button>
+        <a tabindex="0"  role="button" class="btn btn-default" data-toggle="popover" data-container="body" data-placement="right" data-trigger="focus" title="Popover on the right" data-content="Sit nisi sint irure magna pariatur id culpa reprehenderit irure.">Dismissible popover</a>
+      </div><!--/ .col -->
+      <div class="col-md-3 col-lg-3">
+        <h2 class="sg-h1">Modal</h2>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalDemo">Launch modal</button>
+      </div><!--/ .col -->
+      <h2 class="sg-h1 clearfix col-md-12 col-lg-12">Collapse</h2>
+      <div class="col-md-4 col-lg-4">
+        <h3 class="sg-h2">Basic example</h3>
+        <p>
+          <a href="#collapseExample" class="btn btn-default collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">Link with href</a>
+          <button aria-controls="collapseExample" aria-expanded="false" class="btn btn-default collapsed" data-target="#collapseExample" data-toggle="collapse" type="button">Button with data-target</button>
+        </p>
+        <p class="collapse" id="collapseExample" role="tabpanel">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </p>
+      </div><!--/ .col -->
+      <div class="col-md-8 col-lg-8">
+        <h3 class="sg-h2">Accordion</h3>
+        <div class="panel-group" role="tablist" id="accordionDemo" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title"> <a href="#collapseOne" role="button" data-toggle="collapse" data-parent="#accordionDemo" aria-expanded="false" aria-controls="collapseOne" class="collapsed"> Collapsible Group Item #1 </a> </h4> </div>
+            <div class="panel-collapse collapse" role="tabpanel" id="collapseOne" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+              <div class="panel-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
+                a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title"> <a href="#collapseTwo" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionDemo" aria-expanded="false" aria-controls="collapseTwo"> Collapsible Group Item #2 </a> </h4> </div>
+            <div class="collapse panel-collapse" role="tabpanel" id="collapseTwo" aria-labelledby="headingTwo" aria-expanded="false">
+              <div class="panel-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
+                a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title"> <a href="#collapseThree" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionDemo" aria-expanded="false" aria-controls="collapseThree"> Collapsible Group Item #3 </a> </h4> </div>
+            <div class="collapse panel-collapse" role="tabpanel" id="collapseThree" aria-labelledby="headingThree" aria-expanded="false">
+              <div class="panel-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
+                a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </div>
+            </div>
+          </div>
+        </div><!--/ .panel-group -->
+      </div><!--/ .col -->
+    </section><!--/ .sg-section.row -->
+    <div class="modal fade in" role="dialog" id="modalDemo" tabindex="-1" aria-labelledby="modalDemoLabel">
+      <div class="modal-dialog" role="document">
+        <article class="modal-content">
+          <header class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h1 class="h3 modal-title" id="modalDemoLabel">Modal title</h1>
+          </header><!--/ .modal-header -->
+          <div class="modal-body">
+            <h2 class="h4">Text in a modal (overflowing to show scroll behavior)</h2>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          </div><!--/ .modal-body -->
+          <footer class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Some action</button>
+          </footer><!--/ .modal-footer -->
+        </article><!--/ .modal-content -->
+      </div><!--/ .modal-dialog -->
+    </div><!--/ .modal -->
+  </main><!--/ .container -->
+  <footer role="contentinfo" id="sg-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-lg-10">
+          <p class="small">Copyright © 2016 <a title="TMMC" href="http://tmmc.pl" target="_blank">TMMC</a> | <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a> <br /> Based on <a href="http://www.monolinea.com/projects/styleguide/" target="_blank" rel="nofollow">Bootstrap Style Guide Boilerplate by Kemie Guaida</a></p>
+        </div><!--/ .col -->
+        <div class="col-md-2 col-lg-2">
+          <a href="#sg-masthead" title="Back to top" class="btn btn-default" id="page-scroller">
+            <i class="glyphicon glyphicon-chevron-up" aria-hidden="true"></i>
+            <span class="sr-only sr-only-focusable">Back to top</span>
+          </a>
+        </div><!--/ .col -->
+      </div><!--/ .row -->
+    </div><!--/ .container -->
+  </footer>
+  <!-- JavaScript -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery-migrate.min.js"></script>
+  <script src="assets/js/plugins.min.js"></script>
+  <script src="assets/js/main.min.js"></script>
+  <script src="assets/js/styleguide.min.js"></script>
+</body>
+</html>

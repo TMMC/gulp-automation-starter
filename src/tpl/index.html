@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <!-- Basic meta: the 3 meta tags below *must* come first in the head -->
+  <meta charset="utf-8" />
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" />  --> <!-- moved to .htaccess -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" /> --> <!-- disable zooming capabilities on mobile devices -->
+  <!-- <meta name="format-detection" content="telephone=no" />  --> <!-- disable phone number auto-linking while still allowing phone number links using "tel://" (for both Android and iPhone) -->
+
+  <!-- SEO meta -->
+  <title>Basic template</title>
+  <meta name="description" content="Project basic template." />
+  <meta name="keywords" content="" />
+  <meta name="robots" content="noindex,nofollow" /> <!-- content="all" in production -->
+  <!-- <meta name="google-site-verification" content="" /> -->
+
+  <!-- Open graph tags: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url"         content="http://www.domain.com/page.html" />
+	<meta property="og:type"        content="website" />
+	<meta property="og:title"       content="Website title" />
+	<meta property="og:description" content="Description" />
+	<meta property="og:image"       content="http://www.domain.com/path/image.jpg" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.min.css" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <a id="skip-link" href="#content">Skip to main content</a>
+  <!--[if lt IE 9]>
+    <div id="warning-ie-outdated" class="alert alert-dismissible" role="alert">
+      <p>You are using a <strong>really outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <button type="button" class="close" data-dismiss="alert" title="Close this message">
+        <i aria-hidden="true">&times;</i>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
+  <![endif]-->
+  <header id="masthead" role="banner">
+    <h1>Page header</h1>
+    <nav id="nav-main" role="navigation">
+      <ul>
+        <li><a href="#">navigation link 01</a></li>
+        <li><a href="#">navigation link 02</a></li>
+        <li><a href="#">navigation link 03</a></li>
+      </ul>
+    </nav><!--/ #nav-main -->
+  </header><!--/ #masthead -->
+
+  <main id="content" tabindex="-1" role="main">
+    <section>
+      <h1>Main page content.</h1>
+    </section>
+    <aside role="complementary">
+      <h1>Complementary content - sidebar</h1>
+    </aside>
+  </main><!--/ #content -->
+
+  <footer id="siteinfo" role="contentinfo">
+    Page footer
+    <div id="cookies-info">
+      <div class="container">
+        <p>Strona korzysta z plików <dfn title="niewielkie informacje tekstowe, wysyłane przez serwer WWW i zapisywane po stronie użytkownika">cookie</dfn> w celu realizacji części usług. Możesz określić warunki przechowywania i dostępu do plików cookie w Twojej przeglądarce.</p>
+        <p><a href="#cookies-info">Rozumiem i nie chcę czytać więcej tego komunikatu.</a></p>
+        <a href="#cookies-info" class="close" title="Zamknij"><i>×</i> <span class="sr-only">Zamknij komunikat</span></a>
+      </div><!--/ .container -->
+    </div><!--/ #cookies-info -->
+  </footer><!--/ #siteinfo -->
+
+  <!-- JavaScript -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery-migrate.min.js"></script>
+  <script src="assets/js/plugins.min.js"></script>
+  <script src="assets/js/main.min.js"></script>
+</body>
+</html>

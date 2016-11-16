@@ -1,0 +1,18 @@
+// == Vertical spacing classes (top and bottom margins and padding)
+@mixin create-spacing-classes($final: $grid-gutter-width, $initial: 0, $step: 5, $units: px) {
+  @while $initial<=$final {
+    .mb-#{$initial} { // margin bottom
+      margin-bottom: ($initial * 1#{$units}) !important;
+    }
+    .mt-#{$initial} { // margin top
+      margin-top: ($initial * 1#{$units}) !important;
+    }
+    .pb-#{$initial} { // padding top
+      padding-bottom: ($initial * 1#{$units}) !important;
+    }
+    .pt-#{$initial} { // padding bottom
+      padding-top: ($initial * 1#{$units}) !important;
+    }
+    $initial: $initial + $step;
+  }
+}

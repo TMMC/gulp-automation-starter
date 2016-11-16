@@ -1,0 +1,123 @@
+# =====================================================
+# Compiled docs
+# =====================================================
+_gh_pages
+_gh-pages
+_site
+
+# =====================================================
+# Always-ignore extensions
+# =====================================================
+*~
+*.7z
+*.csv
+*.dat
+*.diff
+*.err
+*.gz
+*.iso
+*.jar
+*.log
+*.orig
+*.out
+*.pid
+*.pid.lock
+*.rar
+*.rej
+*.ruby-version
+*.seed
+*.swo
+*.swp
+*.tgz
+*.tar
+*.vi
+*.zip
+
+# =====================================================
+# OS or editor files to ignore
+# =====================================================
+._*
+.AppleDouble
+.cache
+Desktop.ini
+.DS_Store
+ehthumbs.db
+*.esproj
+.LSOverride
+nbproject
+.project
+.settings
+*.sublime-*
+Thumbs.db
+.tmproj
+
+# =====================================================
+# OS or editor folders to ignore
+# =====================================================
+.CVS
+components
+.externalToolBuilders
+.grunt
+.hg
+.idea
+jspm_packages
+lib-cov
+logs
+.npm
+pids
+results
+.svn
+vendor
+
+# =====================================================
+# Directories potentially created on remote AFP share
+# =====================================================
+.apdisk
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+
+# =====================================================
+# Recycle Bin used on file shares
+# =====================================================
+$RECYCLE.BIN/
+
+# =====================================================
+# Windows Installer files
+# =====================================================
+*.cab
+*.msi
+*.msm
+*.msp
+
+# =====================================================
+# Files that might appear on external disk
+# =====================================================
+.Spotlight-V100
+.Trashes
+
+# =====================================================
+# Project specific folders to ignore
+# =====================================================
+build
+bower_components
+components
+# dist
+gulp_tasks
+node_modules
+private
+.sass-cache
+temp
+tmp
+
+# =====================================================
+# Project specific files to ignore
+# =====================================================
+npm-debug.log
+TODO.md
+
+# =====================================================
+# Icon must end with two \r
+# =====================================================
+Icon

@@ -1,0 +1,60 @@
+{
+  "name" : "gulp-automation-starter",
+  "description" : "Front-end workflow automation starter based on Gulp.js.",
+  "keywords" : [
+    "automation",
+    "browser-sync",
+    "build-tool",
+    "front-end",
+    "gulp",
+    "jshint",
+    "less",
+    "sass",
+    "task-runner"
+  ],
+  "authors" : [
+    "TMMC <tc@tmmc.pl> (http://tmmc.pl)"
+  ],
+  "license" : "MIT",
+  "private" : true,
+  "homepage" : "",
+  "repository" : {
+    "type" : "git",
+    "url" : ""
+  },
+  "main" : [
+    "./gulpfile.js"
+  ],
+  "dependencies"  : {
+    "html5shiv"         : "latest",
+    "respondjs"         : "https://github.com/scottjehl/Respond.git",
+    "holderjs"          : "latest",
+    "jquery"            : "latest",
+    "jquery-migrate"    : "latest",
+    "colorbox"          : "https://github.com/jackmoore/colorbox.git",
+    "one-page-nav"      : "https://github.com/TMMC/jQuery-One-Page-Nav.git",
+    "stellar"           : "https://github.com/markdalgleish/stellar.js.git",
+    "jcarousel"         : "https://github.com/jsor/jcarousel.git",
+    "lity"              : "https://github.com/jsor/lity.git",
+    "animate-css"       : "https://github.com/daneden/animate.css.git",
+    "normalize-css"     : "https://github.com/necolas/normalize.css.git",
+    "universal-ie6-css" : "https://github.com/malarkey/universal-ie6-css.git",
+    "html5boilerplate"  : "https://github.com/h5bp/html5-boilerplate.git",
+    "bootstrap"         : "latest",
+    "bootstrap-sass"    : "latest",
+    "font-awesome"      : "https://github.com/FortAwesome/Font-Awesome.git",
+    "lato-webfont"      : "https://github.com/TMMC/LatoWebFont.git"
+  },
+  "ignore" : [
+    "**/.*",
+    "*.bak",
+    "bower_components",
+    "components",
+    "docs",
+    "node_modules",
+    "private",
+    "src",
+    "test",
+    "tests"
+  ]
+}

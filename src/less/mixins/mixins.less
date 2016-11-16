@@ -1,0 +1,359 @@
+// Custom mixins
+// --------------------------
+
+// == CSS3 polyfill
+
+// Tabulator size
+.tab-size(@spaces: 2px) {
+  -moz-tab-size: @spaces;
+  -ms-tab-size: @spaces;
+  -o-tab-size: @spaces;
+  -webkit-tab-size: @spaces;
+  tab-size: @spaces;
+}
+
+// Border radius
+.border-radius(@radius: 50%) {
+  -moz-border-radius: @radius;
+  -o-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+// Multiple transform
+//@ratio: 0.5,0.5;
+//@distance: 68px,60px;
+//@transform: scale(@ratio) translate(@distance);
+.multiple-transform(@transform) {
+  -webkit-transform: @transform;
+      -ms-transform: @transform; // IE9 only
+       -o-transform: @transform;
+     -moz-transform: @transform;
+          transform: @transform;
+}
+
+// Filters
+.css-filters(@filters-set) {
+  -moz-filter: @filters-set;
+  -ms-filter: @filters-set;
+  -o-filter: @filters-set;
+  -webkit-filter: @filters-set;
+  filter: @filters-set;
+}
+
+// Multiple columns
+.multicol(@c-width:auto;@c-count:auto;@c-gap:normal;@c-rule-width:0;@c-rule-style:none;@c-rule-color:transparent;@c-fill:auto) {
+  // Columns width and count
+  -moz-columns: @c-width @c-count;      // Firefox
+  -ms-columns: @c-width @c-count;       // Internet Explorer
+  -o-columns: @c-width @c-count;        // Old Opera
+  -webkit-columns: @c-width @c-count;   // Chrome, Safari, New Opera
+  columns: @c-width @c-count;           // Standard W3C syntax
+  // Columns gap width
+  -moz-column-gap: @c-gap;              // Firefox
+  -ms-column-gap: @c-gap;               // Internet Explorer
+  -o-column-gap: @c-gap;                // Old Opera
+  -webkit-column-gap: @c-gap;           // Chrome, Safari, New Opera
+  column-gap: @c-gap;                   // Standard W3C syntax
+  // Columns rule width, style and color
+  -moz-column-rule: @c-rule-width @c-rule-style @c-rule-color;    // Firefox
+  -ms-column-rule: @c-rule-width @c-rule-style @c-rule-color;     // Internet Explorer
+  -o-column-rule: @c-rule-width @c-rule-style @c-rule-color;      // Old Opera
+  -webkit-column-rule: @c-rule-width @c-rule-style @c-rule-color; // Chrome, Safari, New Opera
+  column-rule: @c-rule-width @c-rule-style @c-rule-color;         // Standard W3C syntax
+  // Columns fill
+  -moz-column-fill: @c-fill;    // Firefox
+  -ms-column-fill: @c-fill;     // Internet Explorer
+  -o-column-fill: @c-fill;      // Old Opera
+  -webkit-column-fill: @c-fill; // Chrome, Safari, New Opera
+  column-fill: @c-fill;         // Standard W3C syntax
+}
+
+// Animation play state
+// @play-state: running | paused
+.animation-play-state(@play-state) {
+  -moz-animation-play-state: @play-state;
+  -ms-animation-play-state: @play-state;
+  -o-animation-play-state: @play-state;
+  -webkit-animation-play-state: @play-state;
+          animation-play-state: @play-state;
+}
+
+// Keyframes for animations
+// --------------------------------------------------
+// @name: string;
+// @steps: detached ruleset;
+//
+// @name-example: nameExample;
+// @steps-example: {
+//     0% { opacity: 1; }
+//    50% { opacity: 0; }
+//   100% { opacity: 1; }
+// };
+//
+// .keyframes(@name-example; @steps-example);
+//
+// Shorthand: animation-name animation-duratio animation-timing-function animation-delay animation-iteration-count <animation-direction> <animation-fill-mode> <animation-play-state>
+//
+// @animation-example: @name-example 4s linear 1s infinite;
+// .animated-el { .animation(@animation-example); }
+// --------------------------------------------------
+
+.keyframes(@name; @steps) when (isruleset(@steps)) {
+  @-moz-keyframes @name {     // Mozilla Firefox
+    @steps();
+  }
+  @-ms-keyframes @name {      // Internet Explorer
+    @steps();
+  }
+  @-o-keyframes @name {       // Pre-webkit Opera
+    @steps();
+  }
+  @-webkit-keyframes @name {  // Webkit
+    @steps();
+  }
+  @keyframes @name {          // W3C aka standard
+    @steps();
+  }
+}
+
+// == Convert hex to rgba
+.rgba-color(@hex-color: #fff, @alpha-channel: 1) {
+  @rgba-val: rgba(red(@hex-color), green(@hex-color), blue(@hex-color), @alpha-channel);
+}
+
+// == Gradient types
+#gradient {
+
+  .ellipse(@start: #fff; @mid: #f8f8f8; @end: #f3f3f3; @mid-pos: 50%;  @end-pos: 100%) {
+    background-image: -moz-radial-gradient(50% 50%, ellipse closest-corner, @start, @mid @mid-pos, @end @end-pos);
+    background-image: -ms-radial-gradient(50% 50%, ellipse closest-corner, @start, @mid @mid-pos, @end @end-pos);
+    background-image: -o-radial-gradient(50% 50%, ellipse closest-corner, @start, @mid @mid-pos, @end @end-pos);
+    background-image: -webkit-radial-gradient(50% 50%, ellipse closest-corner, @start, @mid @mid-pos, @end @end-pos);
+    background-image: radial-gradient(closest-corner ellipse at 50% 50%, @start, @mid @mid-pos, @end @end-pos);
+    background-repeat: no-repeat;
+  }
+
+  .vertical-triple(@start: #fff; @mid: #f8f8f8; @end: #f3f3f3; @start-pos: 0px; @mid-pos: 15px; @end-pos: 15px) {
+    background-image: -moz-linear-gradient(top, @start-color @start-pos, @mid @mid-pos,@end @end-pos);
+    background-image: -ms-linear-gradient(top, @start-color @start-pos, @mid @mid-pos,@end @end-pos);
+    background-image: -o-linear-gradient(top, @start-color @start-pos, @mid @mid-pos,@end @end-pos);
+    background-image: -webkit-linear-gradient(top, @start-color @start-pos, @mid @mid-pos,@end @end-pos);
+    background-image: linear-gradient(to bottom, @start-color @start-pos, @mid @mid-pos,@end @end-pos);
+    background-repeat: no-repeat;
+  }
+
+  .directional-triple(@start: #fff; @mid: #f8f8f8; @end: #f3f3f3; @start-pos: 0%; @mid-pos: 50%; @end-pos: 100%; @deg: 45deg) {
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(@deg, @start @start-pos, @mid @mid-pos, @end @end-pos);
+    background-image: -o-linear-gradient(@deg, @start @start-pos, @mid @mid-pos, @end @end-pos);
+    background-image: -ms-linear-gradient(@deg, @start @start-pos, @mid @mid-pos, @end @end-pos);
+    background-image: linear-gradient(@deg, @start @start-pos, @mid @mid-pos, @end @end-pos);
+  }
+
+}
+
+// == Background image(s) variations
+// All variable can be set for multiple images, @images must be defined
+// @images: url('@{@images}first-img.png'), url('@{@images}second-img.png');
+// Prepared for cover image by default
+.bg-img-variant(@images; @attachment: fixed; @repeat: no-repeat; @size: cover) {
+  background-image: @images;
+  background-attachment: @attachment;
+  background-repeat: @repeat;
+  background-size: @size;
+}
+
+// == Parallax images
+.parallax() {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  @media (max-width: @grid-float-breakpoint-max) {
+    body & {
+      background-position: 50% 50% !important;
+    }
+  }
+  background-size: cover;
+  position: relative;
+}
+
+// == Contextual backgrounds
+// .custom-contexts(@bg-color: @brand-primary; @txt-color: @light;) {
+//   background-color: fade(lighten(@bg-color, 15%), 70%);
+//   box-shadow: inset 0 0 0 1px fade(@bg-color, 25%);
+//   &, > * {
+//     color: @txt-color;
+//     text-shadow: 1px 1px 0 fade(@bg-color, 30%);
+//   }
+// }
+
+// == Rounded element
+.rounded(@dimension: 1.5em; @bg-color: transparent; @brd: 0 none; @txt-shadow: none; @shadow: none; @font-size: inherit;) {
+  width: @dimension;
+  height: @dimension;
+  padding: 0;
+  text-align: center;
+  line-height: @dimension;
+  background-color: @bg-color;
+  border: @brd;
+  .border-radius(50%);
+  .box-shadow(@shadow);
+  text-shadow: @txt-shadow;
+  font-size: @font-size;
+}
+
+// == Boxes
+// General boxes styles
+// .box(@border: 1px solid @gray-light; @border-radius: 2px; @margin-vertical: 20px; @padding: 15px) {
+//   border: @box-border;
+//   .border-radius(@box-border-radius);
+//   margin-bottom: @box-margin-vertical;
+//   margin-top: @box-margin-vertical;
+//   padding: @box-padding;
+// }
+
+// Apply colors
+// .box-colors(@box-bg: transparent; @box-color: inherit; @box-border: darken(@light-base, 20%)) {
+//   background-color: @box-bg;
+//   color: @box-color;
+//   border-color: @box-border;
+// }
+
+// == Callouts
+// @callouts-names   : error, success, attention, info;
+// @callouts-accents : #ED5565, #A0D468, #F6BB42, #5D9CEC;
+// @callouts-count   : length(@callouts-names);
+
+// .box-variant(@names: @callouts-names; @accents: @callouts-accents; @count: @callouts-count; @index: 1)
+//   when (iscolor(extract(@accents, @index)) and (@index =< @count)) {
+//   // Extract name & color on given position
+//   @name   : extract(@names, @index);
+//   @accent : extract(@accents, @index);
+//   // CSS for variation (used previously defined mixin)
+//   .callout-@{name} {
+//     border-left-width: 5px;
+//     border-left-color: @accent;
+//     h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+//       color: @accent;
+//     }
+//     a {
+//       color: @accent;
+//       &:hover,
+//       &:focus {
+//         color: darken(@accent;, 5%);
+//       }
+//     }
+//   }
+//   // Increment to iterate
+//   .box-variant(@names; @accents; @count; (@index + 1));
+// }
+
+// == Alerts
+// @alerts-names  : error, success, attention, info;
+// @alerts-colors : #ED5565, #A0D468, #F6BB42, #5D9CEC;
+// @alerts-count  : length(@alerts-names);
+
+// Loop to carry out the lists
+// .msg-variant(@names: @alerts-names; @colors: @alerts-colors; @count: @alerts-count; @index: 1)
+//   when (iscolor(extract(@colors, @index)) and (@index =< @count)) {
+//   // Extract name & color on given position
+//   @name  : extract(@names, @index);
+//   @color : extract(@colors, @index);
+//   // CSS for variation (used previously defined mixin)
+//   .msg-@{name} {
+//     .box-colors(@color; darken(@color, 30%); darken(@color, 10%));
+//   }
+//   // Increment to iterate
+//   .msg-variant(@names; @colors; @count; (@index + 1));
+// }
+
+// == Extra lists (alternative markers)
+@markers-names  : star, check, dash;
+@markers-chars  : '★', '✔', '\2013';
+@markers-colors : inherit, inherit, inherit;
+@markers-count  : length(@markers-names);
+
+// Create markers for lists (color can be applied)
+// .list-marker-item(@list-class-name; @list-item-marker; @marker-color) {
+//     @{list-class-name} {
+//     li:before {
+//       content: @list-item-marker;
+//       color: @marker-color;
+//     }
+//   }
+// }
+
+.list-markers(@names: @markers-names; @markers: @markers-chars; @colors: @markers-colors; @count: @markers-count; @index: 1)
+  when (@index =< @count) {
+
+  @postfix: extract(@names, @index);      // Extract name on given position.
+  @marker: extract(@markers, @index);     // Extract character on given position.
+  @color: extract(@colors, @index);       // Extract color on given position.
+  @current: ~".marker-@{postfix}";        // Current class name.
+
+
+  // Define css
+  @{current} {
+    &:extend(.list-unstyled);
+    li {
+      position: relative;
+      padding-left: 1.75em;
+      &:before {
+        position: absolute;
+        left: 0;
+        display: block;
+        width: 1.5em;
+        text-align: center;
+        content: @marker;
+        color: @color;
+      }
+    }
+  }
+
+  // Use mixin to create markers for each extra list.
+  // .list-marker-item(@current; @marker; @color);
+
+  // Increment to iterate.
+  .list-markers(@names; @markers; @colors; @count; (@index + 1));
+}
+
+// == Bg variants for animation (ostatecznie nie wykorzstane, ale się nad tym napracowałem)
+//
+// .generate-bg-variants(@final, @iteration) when (@iteration =< @final) {
+//   & when (@iteration < 10) {
+//     &.altbg-0@{iteration} {
+//       background-image: url('@{bg}noise.png'), url('@{bg}bg0@{iteration}.jpg');
+//     }
+//   }
+//   & when (@iteration >= 10) {
+//     &.altbg-@{iteration} {
+//       background-image: url('@{bg}noise.png'), url('@{bg}bg@{iteration}.jpg');
+//     }
+//   }
+//   .generate-bg-variants(@final, (@iteration + 1));
+// }
+
+// == Navbar toggle align vertical
+.navbar-toggle-margins(@navbar-h: 0px; @toggle-h: 0px;) {
+  @computed: ((@navbar-h - @toggle-h) / 2);
+  margin-top: @computed;
+  margin-bottom: @computed;
+}
+
+// Auto generate apropriate z-index
+// --------------------------------------------------
+// @elements: list;
+// @z-index: int;
+// @elements-example: id-name-01, id-name-02;
+// @elements can not contain hashes and dots
+// @z-index-example: 3
+// @z-index should be expected highest z-index + 1
+// --------------------------------------------------
+.create-stack(@elements; @z-index; @count: length(@elements); @index: 1) when (@index =< @count) {
+  @el-id: extract(@stack, @index);             // Extract id name on given position.
+  #@{el-id} { z-index: (@z-index - @index); }  // Define z-index
+
+  // Increment to iterate.
+  .create-stack(@elements; @z-index; @count; (@index + 1));
+}

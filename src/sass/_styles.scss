@@ -1,0 +1,303 @@
+// == Custom styles
+// ==================================================
+
+// Global
+// --------------------------------------------------
+
+// == Force scrollbar (IE)
+:root {
+  -ms-overflow-style: scrollbar;
+}
+
+body {
+  padding-top: 0; //78px;
+  // margin: 0 auto;
+  // width: 80%;
+  // background-color: FloralWhite;
+  // text-align: center;
+}
+
+@media (max-width: $screen-xs) {
+  body, html { min-width: 320px; }
+}
+
+// html,
+// body {
+//   height: 100%;
+//   min-height: 100%;
+//   @media (max-width: $screen-xs) {
+//     min-width: 320px;
+//   }
+// }
+
+// == By default animate those elements
+// a,
+// .btn,
+// .form-control,
+// a > *,
+// .camera_prev,
+// .camera_next,
+// .navbar-toggle,
+// .navbar-toggle .icon-bar {
+//   @transition: .3s ease-in;
+//   .transition(@transition);
+//   &.active, .active > &,
+//   &.disabled, &[disabled],
+//   .disabled &, [disabled] & {
+//     .transition(none);
+//   }
+// }
+
+textarea {
+  resize: vertical;
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+// Misc (may be overwritten in later definitions)
+// --------------------------------------------------
+
+// == Outdated IE warning
+// #warning-ie-outdated {
+//   border-radius: 0;
+//   background-color: @warning-ie-bg;
+//   border: 0 none;
+//   border-bottom: 1px solid @warning-ie-border;
+//   color: @warning-ie-color;
+//   margin: 0;
+//   padding: @warning-ie-padding;
+//   position: relative;
+//   width: 100%;
+//   text-align: center;
+//
+//   .close {
+//     position: absolute;
+//     right: 15px;
+//     top: 50%;
+//     margin-top: -11px;
+//   }
+//
+//   p {
+//     margin: 0 @warning-ie-margin-r 0 0;
+//
+//     a {
+//       color: saturate(lighten(@warning-ie-color, 10%), 10%);
+//       text-decoration: underline;
+//       &:hover,
+//       &:focus {
+//         color: saturate(darken(@warning-ie-color, 10%), 10%);
+//       }
+//     }
+//   }
+// }
+
+// == Accessibility link
+#skip-link {
+  @include sr-only;
+  @include sr-only-focusable;
+}
+
+// == Text
+.text-bolded { font-weight: bold; }
+.text-italic { font-style: italic; }
+
+// == Vertical spacing classes
+@include create-spacing-classes;
+
+// == Extra lists
+// .list-markers();
+//
+// .dl-inline {
+//   dd, dt {
+//     display: inline;
+//   }
+//   dd {
+//     padding-right: 2px;
+//     padding-left: 2px;
+//   }
+// }
+
+// Animations
+// --------------------------------------------------
+
+// Base structure
+// --------------------------------------------------
+
+// Header
+// --------------------------------------------------
+
+// Content
+// --------------------------------------------------
+
+// == Remove outline
+main {
+  outline: 0 none !important;
+}
+
+// Sections
+// --------------------------------------------------
+
+// == Parallax
+// .parallax-section {
+//   .parallax();
+// }
+
+// Footer
+// --------------------------------------------------
+
+// == Cookies info
+#cookies-info {
+  font-size: 90%;
+  text-align: center;
+
+  .container {
+    position: relative;
+    padding: 10px 30px;
+
+    p {
+      margin: 0;
+      text-align: center;
+      display: inline;
+    }
+
+    // a {
+    //   text-decoration: underline;
+
+    //   &:hover,
+    //   &:focus {
+    //     text-decoration: none;
+    //   }
+    // }
+  }
+
+  .no-js & {
+    background-color: fade($gray-base, 35%);
+    color: fade($light-base, 35%);
+    position: relative;
+    margin-bottom: ($line-height-computed * (-1));
+    margin-top: $line-height-computed;
+    border-top: 1px solid fade($light-base, 7.5%);
+
+    .container {
+
+      p + p,
+      .close {
+        display: none;
+      }
+
+      a {
+        color: fade($light-base, 50%);
+
+        &:hover,
+        &:focus {
+          color: fade($light-base, 75%);
+        }
+      }
+    }
+  }
+
+  .js & {
+    position: fixed;
+    font-size: 95%;
+    bottom: 0;
+    width: 100%;
+    z-index: 1050;
+    background-color: fade($gray-base, 70%);
+    color: fade($light-base, 75%);
+    border-top: 1px solid fade($gray-base, 35%);
+    box-shadow: inset 0 1px 0 fade($light-base, 10%);
+
+    .container {
+
+      a {
+        color: fade($light-base, 95%);
+
+        &:hover,
+        &:focus {
+          color: fade($light-base, 100%);
+        }
+
+        &.close {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          margin-top: -8px;
+          width: 16px;
+          height: 16px;
+          line-height: 16px;
+          font-size: 16px;
+          opacity: .5;
+          // background-color: fade($gray-base, 45%);
+          border-radius: 1px;
+
+          &:hover,
+          &:focus {
+            opacity: .85;
+          }
+
+          i {
+            display: block;
+            position: relative;
+            top: 1px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// dupa
+
+// == Scroll to top
+#page-scroller {
+  opacity: .75;
+  position: fixed;
+  right: $line-height-computed;
+  bottom: $line-height-computed;
+  z-index: 1051;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  padding: floor($line-height-computed/5) floor($line-height-computed/5);
+
+  &:hover, &:focus { opacity: 1; }
+}
+
+// Media queries
+// --------------------------------------------------
+
+// == Mobile fist
+
+// >=480
+@media (min-width: $screen-xs) {}
+
+// >=768
+@media (min-width: $screen-sm-min) {}
+
+// >=992
+@media (min-width: $screen-md-min) {}
+
+// >=1200
+@media (min-width: $screen-lg-min) {}
+
+
+//== Desktop first
+
+// <=480
+@media (max-width: $screen-xs) {}
+
+// <= 767
+@media (max-width: $screen-xs-max) {}
+
+// <= 991
+@media (max-width: $screen-sm-max) {}
+
+// <= 1199
+@media (max-width: $screen-md-max) {}
+
+//== Mixed for specific ranges
+
+// >=768 & <= 1199
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {}

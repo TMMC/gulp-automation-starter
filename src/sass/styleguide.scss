@@ -1,0 +1,276 @@
+// == Variables and mixins
+@import "variables";
+@import "mixins";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+// == Global
+body {
+  padding-top: 50px;
+  position: relative;
+}
+
+pre { // older IE fixes
+  _white-space: pre;
+  _white-space: pre-wrap;
+  _word-wrap: break-word;
+}
+
+textarea.form-control {
+  height: 108px;
+  min-height: 34px;
+}
+
+// == Colors swatches
+.sg-color {
+  background-color: #fff;
+  border: 1px solid darken($gray-lighter, 5%);
+  display: inline-block;
+  height: 100px;
+  margin: 0 .5em .5em 0;
+  padding: 4px;
+  position: relative;
+  width: 100px;
+  border-radius: .2em;
+
+  .sg-color-swatch {
+    display: block;
+    height: 100%;
+    width: 100%;
+    span {
+      background-color: #000;
+      background-color: rgba(0,0,0,.7);
+      bottom: 5px;
+      color: #fff;
+      font-size: .8em;
+      margin: 0;
+      opacity: 0;
+      padding: 4px 0;
+      position: absolute;
+      text-align: center;
+      text-transform: uppercase;
+      width: 90px;
+      transition: all 0.6s ease-out;
+    }
+    &:hover {
+      span {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.sg-lg {
+  	width: 120px;
+  	height: 120px;
+    .sg-color-swatch {
+      span {
+        width: 110px;
+      }
+    }
+  }
+
+  *display: inline;  // IE 7
+  zoom: 1;           // IE 7
+}
+
+.sg-color-swatch {
+  .sg-brand-primary & { background-color: $brand-primary; }
+  .sg-gray-lighter & {background-color: $gray-lighter;}
+  .sg-gray-light & {background-color: $gray-light;}
+  .sg-gray & {background-color: $gray;}
+  .sg-gray-dark & {background-color: $gray-dark;}
+  .sg-gray-darker & {background-color: $gray-darker;}
+  .sg-brand-success & {background-color: $brand-success;}
+  .sg-brand-info & {background-color: $brand-info;}
+  .sg-brand-warning & {background-color: $brand-warning;}
+  .sg-brand-danger & {background-color: $brand-danger;}
+}
+
+// == Fonts
+.sg-font { font-size: 1.5em; }
+.sg-font-primary { font-family: $font-family-base; }
+.sg-font-secondary { font-family: $font-family-serif; }
+.sg-font-monospace { font-family: $font-family-monospace; }
+
+// ==  Grid
+.show-grid {
+  padding: .5em 0;
+  div {
+    background-color: $gray-lighter;
+    border: 1px solid $gray-light;
+    padding: .5em
+  }
+}
+
+// == Headings
+.sg-h1,
+.sg-h2,
+.sg-h3,
+.sg-page-header h1 {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+
+  color: $gray-light;
+  text-transform: lowercase;
+  font-variant: small-caps;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: $headings-small-color;
+  }
+}
+
+.sg-page-header {
+  margin: ($line-height-computed * 2) 0 $line-height-computed;
+  border-bottom: 1px solid $gray-lighter;
+
+  h1 {
+    color: darken($gray-light,2.5%);
+  }
+
+  &.col-md-12, &.col-lg-12 {
+    border-bottom: 0 none;
+
+    &:after {
+      display: block;
+      content: '';
+      position: absolute;
+      left: 15px;
+      right: 15px;
+      border-bottom: 1px solid $gray-lighter;
+    }
+
+    + [class*="col-"] > .sg-h1:first-child,
+    + [class*="col-"] + [class*="col-"] > .sg-h1:first-child,
+    + [class*="col-"] + [class*="col-"] + [class*="col-"] > .sg-h1:first-child,
+    + [class*="col-"] + [class*="col-"] + [class*="col-"] + [class*="col-"] > .sg-h1:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.sg-h1,
+.sg-h2,
+.sg-h3 {
+  color: darken($gray-lighter,30%);
+
+  &[class*="col-"] {
+    margin-top: ($line-height-computed/2);
+  }
+}
+
+.sg-h1 { font-size: $font-size-h2; }
+.sg-h2 { font-size: $font-size-h3; }
+.sg-h3 { font-size: $font-size-h4; }
+
+// == Layout
+.sg-section {
+  [class^="bg-"] {
+    padding: 5px;
+    border-radius: $border-radius-small;
+  }
+}
+
+// == Navbar
+#sg-masthead {
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  ul.dropdown-split {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -moz-overflow-scrolling: touch;
+    -ms-overflow-scrolling: touch;
+    -o-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    width: 100%;
+    // max-height: 500px;
+
+    @media (min-width: $screen-sm-min) {
+      .dropdown-col {
+        float: left;
+
+        .divider { @include nav-divider($dropdown-divider-bg); }
+
+        > ul {
+          padding: 0;
+          margin: 0; // override default ul
+          list-style: none;
+
+          > li {
+            @include text-overflow;
+
+            > a {
+              display: block;
+              padding: 3px 20px;
+              clear: both;
+              font-weight: normal;
+              line-height: $line-height-base;
+              color: $dropdown-link-color;
+              white-space: nowrap; // prevent links from randomly breaking onto new lines
+
+              &:hover, &:focus {
+                text-decoration: none;
+                color: $dropdown-link-hover-color;
+                background-color: $dropdown-link-hover-bg;
+              }
+            }
+
+            &.active > a {
+              &,
+              &:hover,
+              &:focus {
+                color: $dropdown-link-active-color;
+                text-decoration: none;
+                outline: 0;
+                background-color: $dropdown-link-active-bg;
+              }
+            }
+
+            &.disabled > a {
+              &,
+              &:hover,
+              &:focus {
+                color: $dropdown-link-disabled-color;
+              }
+
+              &:hover,
+              &:focus {
+                text-decoration: none;
+                background-color: transparent;
+                background-image: none; // Remove CSS gradient
+                @include reset-filter;
+                cursor: $cursor-disabled;
+              }
+            }
+          }
+        }
+      }
+
+      &.dropdown-split-2 {
+        min-width: 480px;
+        .dropdown-col {
+          width: 49.25%;
+          + .dropdown-col {
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+// == Footer
+#sg-footer {
+  font-size: floor((100% * $font-size-small / $font-size-base));
+  border-top: 1px solid $gray-lighter;
+  padding-top: $line-height-computed;
+  padding-bottom: $line-height-computed;
+  color: $gray-light;
+
+  p { margin: 0; }
+}

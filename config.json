@@ -1,0 +1,163 @@
+{
+  "dirs": {
+    "private": "private",
+    "node": "node_modules",
+    "comps": "components",
+    "docs": "docs",
+    "srcBase": "src",
+    "srcJs": "src/js",
+    "srcJsSg": "src/js/sg",
+    "srcJsPlugins": "src/js/plugins",
+    "srcJsMain": "src/js/main",
+    "srcCoffee": "src/coffee",
+    "srcJade": "src/jade",
+    "srcSass": "src/sass",
+    "srcLess": "src/less",
+    "srcTpl": "src/tpl",
+    "srcImg": "src/img",
+    "srcFonts": "src/fonts",
+    "distBase": "dist",
+    "distAssets": "dist/assets",
+    "distCss": "dist/assets/css",
+    "distJs": "dist/assets/js",
+    "distImg": "dist/assets/img",
+    "distFonts": "dist/assets/fonts",
+    "distContent": "dist/assets/content"
+  },
+  "ports": {
+    "alpha": "8000",
+    "beta": "8080",
+    "gamma": "9000",
+    "delta": "9001",
+    "epsilon": "9090",
+    "bsDefault": "3000",
+    "bsUI": "3001",
+    "lrDefault": "35729"
+  },
+  "pluginsOptions": {
+    "pattern": [
+      "gulp-*",
+      "gulp.*",
+      "less-*",
+      "browser-*",
+      "del",
+      "merge-stream",
+      "run-sequence"
+    ],
+    "rename": {
+      "less-plugin-autoprefix": "lessAutoprefix",
+      "less-plugin-clean-css": "lessCleanCss",
+      "merge-stream": "merge"
+    }
+  },
+  "autoprefixerOptions": {
+    "browsers": [
+      "> 5%",
+      "last 5 versions",
+      "Android 2.3",
+      "Android >= 4",
+      "IE >= 8",
+      "Firefox >= 4",
+      "Opera >= 12"
+    ],
+    "cascade": true
+  },
+  "cleanCssOptions": {
+    "advanced": true,
+    "compatibility": [
+      "ie8"
+    ],
+    "aggressiveMerging": true,
+    "roundingPrecision": 2,
+    "s1": true
+  },
+  "sassOptionsDev": {
+    "errLogToConsole": false,
+    "outputStyle": "expanded"
+  },
+  "sassOptionsProd": {
+    "errLogToConsole": false,
+    "outputStyle": "compressed"
+  },
+  "lessOptionsDev": {
+    "plugins": [
+      "lessAutoprefixer"
+    ],
+    "ieCompat": true,
+    "compress": false,
+    "sourceMap": false
+  },
+  "lessOptionsProd": {
+    "plugins": [
+      "lessAutoprefixer",
+      "lessCleanCss"
+    ],
+    "ieCompat": true,
+    "compress": true,
+    "sourceMap": false
+  },
+  "imageMinOptions": {
+    "interlaced": true,
+    "optimizationLevel": 3,
+    "progressive": true
+  },
+  "uglifyOptions": {
+    "ascii_only": false,
+    "ie_proof": true,
+    "indent_level": 2,
+    "max_line_len": 32000,
+    "beautify": false,
+    "source_map": null,
+    "comments": false,
+    "semicolons": true
+  },
+  "cssCompiler": "sass",
+  "banners": {
+    "long": [
+      "/*! @name: <%= pkg.name %>",
+      " *  @version: <%= pkg.version %>",
+      " *  @description: <%= pkg.description %> <%= pkg.homepage ? '\\n' + ' * @homepage: ' + pkg.homepage : '' %>",
+      " *  @author: <%= pkg.author.name %> <%= pkg.author.url ? '(' + pkg.author.url + ')' : '' %>",
+      " *  @copyright: © <%= new Date().getFullYear() %> <%= pkg.author.name %> <%= pkg.author.url ? '(' + pkg.author.url + ')' : '' %> ",
+      " *  @license: <%= pkg.license %>",
+      " */\n"
+    ],
+    "medium": [
+      "/*! <%= pkg.name %> v<%= pkg.version %> <%= pkg.homepage ? '• ' + pkg.homepage : '' %> • <%= pkg.license %> • Copyright © <%= new Date().getFullYear() %> <%= pkg.author.name %> <%= pkg.author.url ? '(' + pkg.author.url + ')' : '' %> */\n"
+    ],
+    "short": [
+      "/*! <%= pkg.name %> v<%= pkg.version %> */\n"
+    ],
+    "file": [
+      "/*! <%= filename %> • <%= new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() %> */\n"
+    ]
+  },
+  "twbsJs": {
+    "transition.js": true,
+    "alert.js": true,
+    "button.js": true,
+    "carousel.js": true,
+    "collapse.js": true,
+    "dropdown.js": true,
+    "modal.js": true,
+    "tab.js": true,
+    "affix.js": true,
+    "scrollspy.js": true,
+    "tooltip.js": true,
+    "popover.js": true
+  },
+  "jqueryCheck": [
+    "if (typeof jQuery === 'undefined') {",
+    " throw new Error('Bootstrap\\' JavaScript requires jQuery');",
+    "}\n"
+  ],
+  "jqueryVersionCheck": [
+    "+function ($) {",
+    "  'use strict';",
+    "  var version = $.fn.jquery.split(' ')[0].split('.')",
+    "  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 3)) {",
+    "    throw new Error('Bootstrap\\' JavaScript requires jQuery version 1.9.1 or higher, but lower than version 4');",
+    "  }",
+    "}(jQuery);\n\n"
+  ]
+}

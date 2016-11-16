@@ -1,0 +1,16 @@
+// == Vertical spacing classes (top and bottom margins and padding)
+.create-spacing-classes(@final: @grid-gutter-width, @initial: 0) when (@initial =< @final) {
+  .mb-@{initial} { // margin bottom
+    margin-bottom: unit(@initial, px) !important;
+  }
+  .mt-@{initial} { // margin top
+    margin-top: unit(@initial, px) !important;
+  }
+  .pb-@{initial} { // padding top
+    padding-bottom: unit(@initial, px) !important;
+  }
+  .pt-@{initial} { // padding bottom
+    padding-top: unit(@initial, px) !important;
+  }
+  .create-spacing-classes(@final, (@initial + 5));
+}

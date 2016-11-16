@@ -1,0 +1,22 @@
+{
+  "analytics"           : false,
+  "color"               : true,
+  "cwd"                 : ".",
+  "directory"           : "components",
+  "ignoredDependencies" : [],
+  "interactive"         : true,
+  "json"                : "bower.json",
+  "registry"            : {
+    "publish"           : "http://localhost:8000",
+    "register"          : "http://localhost:8000",
+    "search"            : [
+      "https://bower.herokuapp.com"
+    ]
+  },
+  "scripts": {
+    "preinstall"        : "",
+    "postinstall"       : "",
+    "preuninstall"      : ""
+  },
+  "timeout"             : 90000
+}

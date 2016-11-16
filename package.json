@@ -1,0 +1,39 @@
+{
+  "name": "gulp-automation-starter",
+  "version": "0.1.0",
+  "description": "Front-end workflow automation starter based on Gulp.js.",
+  "homepage": "",
+  "keywords": [
+    "automation",
+    "browser-sync",
+    "build-tool",
+    "front-end",
+    "gulp",
+    "jshint",
+    "less",
+    "sass",
+    "task-runner"
+  ],
+  "author": {
+    "name": "TMMC",
+    "email": "tc@tmmc.pl",
+    "url": "http://www.tmmc.pl/"
+  },
+  "engines": {
+    "node": ">= 7.0.0",
+    "npm": ">= 3.10.9"
+  },
+  "scripts": {
+    "test": "",
+    "start": "",
+    "predeploy": "",
+    "postdeploy": "",
+    "prepublish": ""
+  },
+  "license": "MIT",
+  "private": true,
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+  }
+}
