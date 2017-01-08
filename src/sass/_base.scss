@@ -1,0 +1,387 @@
+// == Custom styles
+// ==================================================
+
+// Global
+// --------------------------------------------------
+
+// Force scrollbar (IE)
+:root {
+  -ms-overflow-style: scrollbar;
+}
+
+// Quotes
+q {
+	quotes: '\201C' '\201D' '\2018' '\2019'; // English
+
+  [lang^="pl"] & {
+  	quotes: '\201E' '\201D' '\0000AB' '\0000BB'; // Polish
+  }
+
+  &:before {
+    content: open-quote;
+  }
+
+  &:after {
+    content: close-quote;
+  }
+}
+
+// While using sections requiring full body width and height
+// html,
+// body {
+//   height: 100%;
+//   min-height: 100%;
+// }
+
+@media (max-width: $screen-xs) {
+  body, html {
+    min-width: 320px;
+  }
+}
+
+html {
+  // Prevent iOS text size adjust after orientation change, without disabling user zoom.
+  -ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-overflow-scrolling: touch;
+  // Customize iOS tap hightlight, can be disabled by setting alpha channel to 0 (transparent).
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  @include backface-visibility(hidden); // For animate-css
+  position: relative; // For Bootstrap scrollspy
+  // padding-top: 76px; // Fixed header/navbar
+  -webkit-font-smoothing: antialiased;
+}
+
+// Remove outline
+main {
+  outline: 0 none !important;
+}
+
+// By default animate those elements
+a,
+// label,
+.btn,
+.form-control,
+a > *,
+// .camera_prev,
+// .camera_next,
+.navbar-toggle,
+.navbar-toggle .icon-bar,
+.close {
+  $transition: .3s ease-in;
+  @include transition($transition);
+  &.active, .active > &,
+  &.disabled, &[disabled],
+  .disabled &, [disabled] & {
+    @include transition(none);
+  }
+}
+
+textarea {
+  resize: both;
+  resize: vertical;
+}
+
+.checkbox,
+.checkbox-inline {
+  input[type="checkbox"] {
+    margin-top: 2px;
+  }
+}
+
+label,
+[role="button"] {
+  cursor: pointer;
+}
+
+// .form-control {
+//   color: $text-color;
+// }
+
+// == Overwrite Bootstrap: blockquote
+// blockquote {
+//   margin: 0 0 ($line-height-computed / 2);
+//
+//   footer, small, .small {
+//     &:after {
+//       content: '\00A0 \2014'; // em dash, nbsp
+//     }
+//   }
+// }
+
+// == Overwrite Bootstrap: bolded elements
+// label,
+b,
+strong,
+th,
+dt {
+  font-weight: bold;
+  font-weight: 500;
+  font-weight: 600;
+  font-weight: bolder;
+}
+
+label {
+  font-weight: 400;
+}
+
+// Miscalanous (may be overwritten in later definitions)
+// --------------------------------------------------
+
+// == Clearfix (placeholder)
+// %clearfix {
+//   @include clearfix();
+// }
+
+// == Clearfix (as class)
+// .clearfix {
+//   @include clearfix();
+// }
+
+// Collapsed elements
+.collapse {
+  .no-js & {
+    display: block;
+    height: auto;
+  }
+}
+
+// Accessibility link
+#skip-link {
+  @include sr-only();
+  @include sr-only-focusable();
+}
+
+// Arrows links
+.scroller {
+  font-size: $font-size-h1;
+
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    text-decoration: none;
+  }
+
+  // Not always
+  .parallax-pane & {
+    color: $light-base;
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    font-size: ($font-size-h1*2);
+  }
+}
+
+// Some typography adjustments
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-weight: 300;
+  text-transform: uppercase;
+
+  strong, b {
+    font-weight: 400;
+  }
+}
+
+.lead {
+  // color: darken($text-color,5%);
+  strong, b {
+    font-weight: 400; // Lead is 300 and there is a font for it
+    // font-weight: bolder; // There is no font for lead font weight (lt 400)
+  }
+}
+
+// Text
+.text-bolded { font-weight: bold; }
+.text-italic { font-style: italic; }
+
+// Additional text color and background 'emphasis' for Bootstrap
+@include text-emphasis-variant('.text-secondary', $branding-secondary);
+@include bg-variant('.bg-secondary', $branding-secondary);
+.bg-secondary {
+  color: $light-base;
+}
+
+// Icons
+.#{$font-icon-primary-prefix} { // Catchall baseclass
+  display: inline-block;
+  font-family: $font-icon-primary;
+  font-size: inherit;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1; // #{$fa-font-size-base}/#{$fa-line-height-base}
+  position: relative;
+  text-rendering: auto; // optimizelegibility throws things off #1094
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class*="#{$font-icon-secondary-prefix}-"] {
+  font-family: $font-icon-secondary;
+  top: 1px;
+}
+
+// Vertical spacing classes
+@include create-spacing-classes;
+
+// Extra lists
+@include create-fancy-lists;
+
+.marker-inside {
+  li {
+    position: relative;
+    padding-left: 0;
+
+    &:before {
+      position: relative;
+      left: auto;
+      display: inline-block;
+      width: 1.5em;
+    }
+  }
+}
+
+.dl-inline {
+  dd, dt {
+    display: inline;
+  }
+
+  dd {
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+}
+
+// Asterisk and optional related note
+.asterisk {
+  &:after,
+  &.footnote:before {
+    content: '*';
+    position: relative;
+    top: -.175em;
+    color: $branding-primary;
+    font-weight: 500;
+  }
+  &:after {
+    padding-left: 1px;
+    font-size: 90%;
+  }
+
+  &.footnote {
+    &:after {
+      content: '';
+      display: none;
+    }
+    &:before {
+      padding-right: 2px;
+      font-size: 100%;
+    }
+  }
+}
+
+// == Responsive embeds
+// Credit: Nicolas Gallagher and SUIT CSS.
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  &.embed-responsive-16by9 { // Modifier class for 16:9 aspect ratio
+    padding-bottom: 56.25%;
+  }
+
+  &.embed-responsive-4by3 { // Modifier class for 4:3 aspect ratio
+    padding-bottom: 75%;
+  }
+
+  .embed-responsive-item,
+  iframe,
+  embed,
+  object,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+}
+
+// Image replacement
+// When replacing an element's content with an image, make sure to also set a specific 'background-image',
+// 'background-position' if sprite is used, 'width', and 'height' for pseudoelement so that replacement image appears.
+// .ir {
+// 	@include ir;
+// }
+
+// Version with background image
+// .ir:before {
+// 	 background-image: url(pathtoimage.png);
+// 	 background-position: 0 0;
+// 	 background-repeat: no-repeat;
+// 	 content: "";
+// 	 display: block;
+// 	 width: 0;
+// 	 height: 0;
+// }
+
+// Version with image as pseudoelement
+// .ir:before {
+//   content: url(pathtoimage.png);
+// }
+
+// Outdated IE warning
+// --------------------------------------------------
+
+#ie-warning-outdated {
+  border-radius: 0;
+  background-color: $ie-warning-bg;
+  border: 0 none;
+  border-bottom: 1px solid $ie-warning-border;
+  color: $ie-warning-color;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1031;
+  width: 100%;
+  text-align: center;
+
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -11px;
+
+    i { font-style: normal; }
+  }
+
+  p {
+    margin: $ie-warning-margin-vertical $ie-warning-margin-horizontal;
+    padding: $ie-warning-padding-vertical $ie-warning-padding-horizontal;
+    a {
+      color: darken($ie-warning-color, 5%);
+      text-decoration: underline;
+      &:hover,
+      &:focus {
+        color: darken($ie-warning-color, 15%);
+      }
+    }
+  }
+}

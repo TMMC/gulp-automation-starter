@@ -1,0 +1,13 @@
+// == Auto generate apropriate z-index
+// --------------------------------------------------------------------------------
+// $elements: list of IDs without hashes or dots, ie.: id-name-01, id-name-02
+// $z-index: int
+// --------------------------------------------------------------------------------
+
+@mixin create-stack($elements, $z-index) {
+  @each $el in $elements {
+    ##{$el} {
+      z-index: ($z-index - index($elements, $el));
+    }
+  }
+}

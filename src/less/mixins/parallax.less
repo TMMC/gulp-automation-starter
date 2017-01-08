@@ -1,0 +1,13 @@
+// == Parallax images
+.parallax() {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  @media (max-width: @grid-float-breakpoint-max) {
+    body & {
+      background-position: 50% 50% !important;
+    }
+  }
+  background-size: cover;
+  position: relative;
+}

@@ -19,7 +19,7 @@ Getting necessary resources (in this case only via `bower` but git cloning can b
 
 ### copy-resources
 Run `gulp copy-resources` from CLI.  
-Copy resources and rename some of them.
+Copy resources and rename some of them. The task optimizes images while copying them.
 
 ### jshint-src
 Run `gulp jshint-src` from CLI.  
@@ -68,7 +68,7 @@ Watch files for changes and compile if changes appear. It only watches sass/less
 
 ### default
 Run `gulp` from CLI.  
-To avoid various mistakes this task only lists all the available tasks using `gulp --tasks-simple`.
+To avoid various mistakes this task only lists all the available tasks using `gulp --tasks` (can be changed to `gulp --tasks-simple`).
 
 ---
 

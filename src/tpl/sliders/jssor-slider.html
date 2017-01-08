@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Basic HTML for standard Jssor slider</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="robots" content="" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <section class="content-section slider-section" id="home-slider">
+    <div class="jssor-slider" id="jssor-promo">
+      <!-- Loading screen -->
+      <div data-u="loading" class="jssor-loading"></div>
+      <!-- Slides -->
+      <div data-u="slides" class="jssor-slides">
+        <div data-p="225.00" class="jssor-slide">
+          <img data-u="image" src="assets/img/jssor/red.jpg" alt="Alternative text" />
+          <div class="jssor-slide-caption" data-u="caption" data-t="0">
+            <div>
+              <p class="jssor-text-primary">Irure aliqua exercitation labore sit culpa</p>
+              <p class="jssor-text-secondary">Anim cillum laborum pariatur mollit ex ullamco id fugiat</p>
+            </div>
+          </div>
+        </div>
+        <div data-p="225.00" class="jssor-slide" style="display: none;">
+          <img data-u="image" src="assets/img/jssor/purple.jpg" alt="Alternative text" />
+          <div class="jssor-slide-caption" data-u="caption" data-t="1">
+            <div>
+              <p class="jssor-text-primary">Exercitation non nisi esse amet Lorem occaecat</p>
+              <p class="jssor-text-secondary">Adipisicing non voluptate quis incididunt id laborum non veniam</p>
+            </div>
+          </div>
+        </div>
+        <div data-p="225.00" class="jssor-slide" data-po="80% 55%" style="display: none;">
+          <img data-u="image" src="assets/img/jssor/blue.jpg" alt="Alternative text" />
+          <div class="jssor-slide-caption" data-u="caption" data-t="2">
+            <div>
+              <p class="jssor-text-primary">Reprehenderit officia in proident velit pariatur</p>
+              <p class="jssor-text-secondary">Aliqua adipisicing fugiat mollit excepteur reprehenderit laboris</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bullets indicators -->
+      <div data-u="navigator" class="jssor-slider-indicators" data-autocenter="1">
+        <!-- Bullet indicator item prototype -->
+        <div data-u="prototype" class="jssor-indicator"></div>
+      </div>
+      <!-- Arrows -->
+      <span data-u="arrowleft" class="jssor-control-prev" data-autocenter="2"></span>
+      <span data-u="arrowright" class="jssor-control-next"data-autocenter="2"></span>
+    </div>
+  </section>
+  <!-- JavaScript -->
+  <script src="jquery.js"></script>
+  <script src="plugins.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

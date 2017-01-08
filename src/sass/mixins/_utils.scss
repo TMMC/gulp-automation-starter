@@ -1,0 +1,290 @@
+// == Utils (mostly taken from Bootstrap)
+// ==================================================
+
+// == Clearfix
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+@mixin clearfix() {
+  *zoom: 1;          // IE lt 8
+
+  &:before,
+  &:after {
+    content: " ";    // 1
+    // display: block;
+    display: table;  // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// == Only display content to screen readers
+// See: http://a11yproject.com/posts/how-to-hide-content
+@mixin sr-only() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Credit: HTML5 Boilerplate
+@mixin sr-only-focusable() {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+// == Text overflow
+// Requires inline-block or block for proper styling
+@mixin text-overflow($display: null) {
+  overflow: hidden;
+  text-overflow: clip;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: $display;
+}
+
+// == CSS image replacement
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+@mixin text-hide() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0 none;
+}
+
+// == Image replacement
+// Credit: HTML5 Boilerplate (included in older versions)
+@mixin ir() {
+  @include text-hide();
+	overflow: hidden;
+	// *text-indent: -9999px; /* IE 6/7 fallback */
+}
+
+// == Font face
+// --------------------------------------------------
+// Generates font-face declaration for multiple file formats.
+// @param $font-family (string) - font family name
+// @param $font-path (string) - path to font files location ending with slash
+// @param $font-file-name (string) - font file name (basename w/out extension)
+// @param $font-style (normal|italic|oblique|inherit) - font style, default `normal`
+// @param $font-weight (string|number) - font weight, default `normal`
+// @param $font-svg-id (string|null) - quoted id for svg font format, default `null`
+// @param $text-rendering (auto|optimizeSpeed|optimizeLegibility|geometricPrecision|null) - font optimization when rendering text, default `null`
+// @param $font-formats (map) - sass map of font formats and extensions to use [font extension: font format string]
+
+@mixin _font-face($font-family, $font-path, $font-file-name, $font-style: normal, $font-weight: normal, $font-svg-id: null, $text-rendering: null, $font-formats: (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, otf: opentype, svg: svg)) {
+  $font-src: (); // Initiate empty list with values for `src` property.
+
+  @each $font-ext, $font-format in $font-formats { // Loop through font formats.
+    @if ($font-ext == 'eot') {         // If it is eot font (IE).
+      $font-ext: '#{$font-ext}#iefix'; // Add fix to font extension.
+    } @else if ($font-ext == 'svg' and $font-svg-id != null) { // If it is svg font and id for svg font is not null.
+      $font-ext: '#{$font-ext}##{$font-svg-id}';               // Add id to font extension.
+    }
+    // Append font format to the list of values for `src` property.
+    $font-src: append($font-src, url('#{$font-path}#{$font-file-name}.#{$font-ext}') format('#{$font-format}'), comma);
+  }
+
+  @at-root {
+    @font-face {
+      font-family: '#{$font-family}';
+      @if (map-has-key($font-formats, eot)) {             // If there is an eot font (IE).
+        src: url('#{$font-path}#{$font-file-name}.eot');  // Add `src` w/out `format` for older IE.
+      }
+      src: $font-src;
+      font-style: $font-style;
+      font-weight: $font-weight;
+      text-rendering: $text-rendering;
+    }
+  }
+}
+
+// Usage example 01: all font formats, normal font style and weight, given id for svg format, text rendering set to auto
+// @include _font-face('sample-font-family', 'sample/path/to/', 'font-file-regular', normal, normal, 'font-regular-id', auto, (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, otf: opentype, svg: svg));
+// Usage example 02: same font family as above, no open type format, font style set to italic, font weight set to bold, no id for svg format, no text rendering
+// @include _font-face('sample-font-family', 'sample/path/to/', 'font-file-bold-italic', italic, bold, null, null, (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, svg: svg));
+
+// == Font size in rems
+// $el-font-size: int (unitless font size in pixels, default: 16)
+// $html-font-size: int (unitless font size in pixels, default: 16)
+@mixin rem-font-size($el-font-size: 16, $html-font-size: 16) {
+  font-size: ($el-font-size*1px); // Default: 16px
+  font-size: ($el-font-size/$html-font-size*1rem); // Default: 1rem
+}
+
+// == Shorthand for positioning element
+// @param $type (string) - position type `static`, `relative`, `absolute`, `fixed`
+// @param $top (length) - top offset, default null (ommited)
+// @param $left (length) - left offset, default null (ommited)
+// @param $bottom (length) - bottom offset, default null (ommited)
+// @param $right (length) - right offset, default null (ommited)
+// @param $z-index (int) - position in stack, default null (ommited)
+@mixin _position($type, $top: null, $left: null, $bottom: null, $right: null, $z-index: null) {
+  position: $type;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+  z-index: $z-index;
+}
+
+// == Sizing helper
+// @param $width (length) - width of an element
+// @param $height (length) - height of an element
+// Defaults to square (width = height), unitless values are converted to px
+@mixin _size($width, $height: $width) {
+  @if unitless($width) { $width: $width*1px; }
+  @if unitless($height) { $height: $height*1px; }
+  width: $width;
+  height: $height;
+}
+
+// == Centering
+// --------------------------------------------------
+
+// == Center block elements horizontally
+@mixin _center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// == Center block elements horizontally and vertically
+// Both width and height of both parent and child elements are unknown.
+// Important: parent element must have relative, absolute or fixed position.
+// @param $orientation (null|h|v) - how to center element, default `null` - both, h - horizontally, v - vertically
+// Usage example:
+// .parent {
+//   position: relative; // relative|absolute|fixed
+//
+//   .centered-child {
+//     @include _center-in-viewport();
+//   }
+// }
+
+@mixin _center-in-viewport($orientation: null) {
+  position: absolute;
+
+  @if ($orientation == 'h') { // Center only horizontally.
+    left: 50%;
+    @include _prefix(transform: translateX(-50%), (webkit moz ms));
+  } @else if ($orientation == 'v') { // Center only vertically.
+    top: 50%;
+    @include _prefix(transform: translateY(-50%), (webkit moz ms));
+  } @else { // Center both horizontally and vertically.
+    top: 50%;
+    left: 50%;
+    @include _prefix(transform: translate(-50%, -50%), (webkit moz ms));
+  }
+}
+
+// == Center block elements vertically ('ghost method')
+// Based on: https://css-tricks.com/centering-in-the-unknown/.
+// Both width and height of both parent and child elements are unknown.
+// Mixins can be used on parent and child elements instead of using placeholder.
+// Remember to (re)set correct font size and line height for element extending `%ghost-center-child` placeholder.
+// Usage example:
+// .sample-parent {
+//   @extend %ghost-center-parent;       // Extend placeholder.
+//   // @include ghost-center-parent();  // Using mixin instead of placeholder.
+//
+//   .sample-child {
+//     @extend %ghost-center-child; // Extend placeholder.
+//     // @include ghost-center-child();  // Using mixin instead of placeholder.
+//
+//     // Remember to (re)set font size and line height.
+//     font-size: 1rem;
+//     line-height: 1.4;
+//   }
+// }
+
+@mixin ghost-center-parent() {
+  font-size: 0;    // Prevent child nudge by `ghost` element.
+  line-height: 0;  // Prevent child nudge by `ghost` element.
+  overflow: auto;
+  text-align: center;
+  // white-space: nowrap; // If container may be narrower than child.
+
+  // Pseudo-element: 'ghost element' essential for centering.
+  &:before {
+    content: " ";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+@mixin ghost-center-child() {
+  display: inline-block;
+  overflow: auto;
+  vertical-align: middle;
+
+  // W/out setting font-size and line height to 0, the line below would prevent child nudge by `ghost` element (adjust for spacing).
+  // margin-right: -0.25em;
+}
+
+// Parent element.
+%ghost-center-parent {
+  @include ghost-center-parent();
+
+  // Vertically centered child element (may have children).
+  > %ghost-center-child {
+    @include ghost-center-child();
+  }
+}
+
+// == Center elements both vertically and horrizontally (display: table/table-cell method).
+// All elements inside `%table-center-child` will be centered both vertically and horrizontally.
+// Usage example:
+// .parent {
+//   @extend %table-center-parent;    // Extend placeholder.
+//   // @include table-center-parent();  // Mixin instead of placeholder.
+//
+//   .child {
+//     @extend %table-center-child;    // Extend placeholder.
+//     // @include table-center-child();  // Mixin instead of placeholder.
+//   }
+// }
+
+@mixin table-center-parent() {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: table;
+  width: 100%;
+}
+
+@mixin table-center-child() {
+  display: table-cell;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+
+%table-center-parent {
+  @include table-center-parent();
+
+  %table-center-child {
+    @include table-center-child();
+  }
+}

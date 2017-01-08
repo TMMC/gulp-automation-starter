@@ -19,6 +19,8 @@ After running various tasks, some more folders will be created.
     ├── coffee
     ├── fonts
     ├── img
+    │   ├── content
+    │   └── global
     ├── jade
     ├── js
     │   ├── main

@@ -2,17 +2,75 @@
 // ==================================================
 
 // == Paths
-@fonts-path   : '../fonts/';
-@images-path  : '../img/';
+@fonts: '../fonts/';
+@images: '../img/';
 
 // == Fonts
-@font-stack-sans-serif : LatoWeb, "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-stack-serif      : Georgia, "Times New Roman", Times, serif;
-@font-stack-monospace  : Menlo, Monaco, Consolas, "Courier New", monospace;
-@font-family-base      : @font-stack-sans-serif;
-@font-family-heading   : @font-stack-serif;
+@font-stack-sans-serif: LatoWeb, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-stack-serif: Georgia, "Times New Roman", Times, serif;
+@font-stack-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+// == Icons
+// First icon font (Font Awesome)
+@font-icon-primary: FontAwesomeWeb;
+@font-icon-primary-font-name: "fontawesome-webfont";
+@font-icon-primary-svg-id: "fontawesomeregular";
+@font-icon-primary-prefix: icon;
+// Second icon font (Glyphicons Halfings)
+@font-icon-secondary: GlyphIconWeb;
+@font-icon-secondary-font-name: "glyphicons-halflings-regular";
+@font-icon-secondary-svg-id: "glyphicons_halflingsregular";
+@font-icon-secondary-prefix: glyphicon;
 
 // == Colors
 @light-base: #fff;
-@body-bg: @light-base;
-@body-txt: #333;
+
+// == Branding colors
+@branding-primary: #c2272d;
+@branding-secondary: #3b3838;
+@branding-comlementary-a: @light-base;
+@branding-comlementary-b: #f0f0f0;
+
+// == IE warning
+@ie-warning-border: #f1a899;
+@ie-warning-bg: #fddfdf;
+@ie-warning-color: darken(@ie-warning-border, 30%);
+@ie-warning-margin-vertical: 0;
+@ie-warning-margin-horizontal: 0;
+@ie-warning-padding-vertical: 0;
+@ie-warning-padding-horizontal: 0;
+
+// == Black/dark button
+@btn-inverse-color:   darken(@light-base, 5%);
+@btn-inverse-bg:      @gray-darker;
+@btn-inverse-border:  darken(@btn-inverse-bg,7.5%);
+
+// == Secondary button
+@btn-secondary-color: darken(@light-base, 5%);
+@btn-secondary-bg: @branding-secondary;
+@btn-secondary-border: darken(@btn-secondary-bg, 10%);
+
+// == Carousel indicators
+@carousel-indicator-bg:         @carousel-indicator-border-color;
+@carousel-indicator-hover-bg:   @carousel-indicator-active-bg;
+
+// == Navbar toggle
+@navbar-default-toggle-normal-bg: darken(@light-base, 1%);
+@navbar-inverse-toggle-normal-bg: darken(@branding-primary, 1%);
+@navbar-default-toggle-icon-bar-hover-bg: darken(@light-base, 1%);
+@navbar-inverse-toggle-icon-bar-hover-bg: darken(@branding-primary, 1%);
+
+// == Slick slider
+@slick-font-path: @fonts;
+@slick-font-family: @font-icon-primary;
+@slick-loader-path: @images;
+@slick-arrow-color: @branding-primary;
+@slick-dot-color: @carousel-indicator-border-color;
+@slick-dot-color-active: @carousel-indicator-active-bg;
+@slick-prev-character: @fa-var-angle-left;
+@slick-next-character: @fa-var-angle-right;
+@slick-dot-character: @fa-var-circle;
+@slick-dot-size: 12px;
+@slick-opacity-default: @carousel-control-opacity;
+@slick-opacity-on-hover: .9;
+@slick-opacity-not-active: 0.25;

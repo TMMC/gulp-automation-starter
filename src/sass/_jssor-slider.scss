@@ -1,0 +1,207 @@
+// == Jssor slider
+// ==================================================
+
+.jssor-slider,
+.jssor-slides {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 1300px;
+  height: 500px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.jssor-slider {
+  margin: 0 auto;
+  visibility: hidden;
+
+  .jssor-loading {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  .jssor-slides {
+    cursor: default;
+  }
+}
+
+// == Jssor slider bullet navigator skin 05 css */
+// .jssor-slider-indicators div           (normal)
+// .jssor-slider-indicators div:hover     (normal mouseover)
+// .jssor-slider-indicators .av           (active)
+// .jssor-slider-indicators .av:hover     (active mouseover)
+// .jssor-slider-indicators .dn           (mousedown)
+
+.jssor-slider-indicators {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+
+  div, .av {
+    position: absolute;
+    /* size of bullet elment */
+    width: 12px;
+    height: 12px;
+    background-color: $branding-complementary-a;
+    // border: 1px solid $branding-secondary;
+    $shadow: 0 0 3px 1px rgba($gray-base,.5);
+    @include box-shadow($shadow);
+    @include border-radius(50%);
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $branding-complementary-b;
+      border-color: $branding-primary;
+    }
+  }
+
+  .av {
+    background-color: $branding-complementary-b;
+
+    &:hover {
+      background-color: $branding-complementary-b;
+      border-color: $branding-primary;
+    }
+  }
+
+  .dn {
+    &, &:hover {
+      background-position: -97px -7px;
+    }
+  }
+
+  .jssor-indicator {
+    height: 12px;
+    width: 12px;
+  }
+}
+
+.jssor-loading {
+  // background: url('#{$images}camera-loader.gif') no-repeat center;
+  // border: 1px solid #fff;
+  @extend .icon;
+  @extend .icon-spinner;
+  @include border-radius(8px);
+  height: 36px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute !important;
+  margin: -18px 0 0 -18px;
+  top: 50%;
+  width: 36px;
+  font-size: 36px;
+  line-height: 36px;
+  z-index: 3;
+  color: rgba($gray-dark,.75);
+  -webkit-animation: fa-spin 1s infinite steps(8);
+  -moz-animation: fa-spin 1s infinite steps(8);
+       animation: fa-spin 1s infinite steps(8);
+}
+
+// == Jssor slider arrow navigator
+// .jssor-control-prev                  (normal)
+// .jssor-control-next                  (normal)
+// .jssor-control-prev:hover            (normal mouseover)
+// .jssor-control-next:hover            (normal mouseover)
+// .jssor-control-prev.dn      (mousedown)
+// .jssor-control-next.dn      (mousedown)
+// .jssor-control-prev.ds      (disabled)
+// .jssor-control-next.ds      (disabled)
+
+.jssor-control-next,
+.jssor-control-prev {
+  @extend .icon;
+  @include border-radius($border-radius-base);
+  overflow: hidden;
+  cursor: pointer;
+  position: absolute !important;
+  text-align: center;
+  top: 0;
+  /* size of arrow element */
+  height: 40px;
+  width: 40px;
+  font-size: 40px !important;
+  line-height: 40px;
+  background: transparent none;
+  margin-top: -20px;
+  color: $branding-complementary-a;
+  text-shadow: 1px 0 0 rgba($gray-base,.7);
+
+  // &:before {
+  //   display: block;
+  //   width: 100%;
+  //   height: 100%;
+  // }
+
+  &:hover {
+    color: $branding-complementary-b;
+  }
+
+  &.ds {
+    @include opacity(.3);
+    pointer-events: none;
+  }
+}
+
+.jssor-control-prev {
+  @extend .icon-angle-left;
+  left: 5px;
+
+  &.dn {
+    // background-position: -250px -31px;
+  }
+
+  &.ds {
+    // background-position: -10px -31px;
+  }
+}
+
+.jssor-control-next {
+  @extend .icon-angle-right;
+  right: 5px;
+
+  &.dn {
+    // background-position: -310px -31px;
+  }
+
+  &.ds {
+    // background-position: -70px -31px;
+  }
+}
+
+.jssor-slide {
+  .jssor-slide-caption {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1300px;
+    height: 500px;
+    color: #ffffff;
+    display: table;
+
+    > div {
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+    }
+    .jssor-text-primary,
+    .jssor-text-secondary {
+      @extend .container;
+      text-align: center;
+      font-weight: 300;
+      text-transform: uppercase;
+      line-height: $headings-line-height;
+    }
+    .jssor-text-primary {
+      font-size: ($font-size-h1*1.5);
+      margin-top: 0;
+    }
+    .jssor-text-secondary {
+      margin-bottom: 0;
+      font-size: $font-size-h1;
+    }
+  }
+}

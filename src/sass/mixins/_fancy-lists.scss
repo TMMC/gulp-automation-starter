@@ -1,0 +1,31 @@
+// == Extra lists (alternative markers)
+$markers-names  : "star" "check" "dash";
+$markers-chars  : '★' '✔' '\2013';
+$markers-colors : $branding-primary $branding-primary $branding-primary;
+$markers-count  : length($markers-names);
+
+// Create lists with extra markers (color can be applied)
+@mixin create-fancy-lists($names: $markers-names, $markers: $markers-chars, $colors: $markers-colors) {
+  @each $marker_name in $names {
+    $marker_char  : nth($markers, index($names, $marker_name)); // Extract character on given position.
+    $marker_color : nth($colors, index($names, $marker_name));  // Extract color on given position.
+
+    // Create css
+    .marker-#{$marker_name} {                                   // Class name created on $markers-names basesis.
+      @extend .list-unstyled;
+      li {
+        position: relative;
+        padding-left: 1.75em;
+        &:before {
+          position: absolute;
+          left: 0;
+          display: block;
+          width: 1.5em;
+          text-align: center;
+          content: $marker_char;
+          color: $marker_color;
+        }
+      }
+    }
+  }
+}

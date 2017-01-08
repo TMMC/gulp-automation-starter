@@ -1,0 +1,232 @@
+// == Colorbox
+// ==================================================
+
+/* Core Style */
+#colorbox,
+#cboxOverlay,
+#cboxWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#cboxWrapper {
+  max-width: none;
+}
+
+#cboxOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#cboxMiddleLeft, #cboxBottomLeft {
+  clear: left;
+}
+
+#cboxContent {
+  position: relative;
+}
+
+#cboxLoadedContent {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#cboxTitle {
+  margin: 0;
+}
+
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+  cursor: pointer;
+}
+
+.cboxPhoto {
+  float: left;
+  margin: auto;
+  border: 0;
+  display: block;
+  max-width: none;
+  -ms-interpolation-mode: bicubic;
+}
+
+.cboxIframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#colorbox, #cboxContent, #cboxLoadedContent {
+  .box-sizing(content-box);
+}
+
+/* User Style */
+#cboxOverlay {
+  background: @gray-base url('@{images}cbox-overlay.png');
+}
+
+#colorbox {
+  outline: 0;
+  background: lighten(@gray-base, 5%);
+  border-radius: 2px;
+  @bshadow: inset 0 0 0 1px fade(@light-base, 25%), 5px 5px 15px -3px fade(@gray-base, 75%);
+  .box-shadow(@bshadow);
+}
+
+#cboxContent {
+  background: #fff;
+  border-top: 33px solid @gray-lighter;
+  margin: 7px;
+  border-radius: 1px;
+  @bshadow: inset 0 2px 0 -1px darken(#dcddde, 7.5%);
+  .box-shadow(@bshadow);
+}
+
+.cboxIframe {
+  background: #fff;
+}
+
+#cboxError {
+  font-weight: bold;
+  font-weight: 500;
+  text-align: center;
+  background: #fef1ec;
+  color: #cd0a0a;
+  border: 1px solid #cd0a0a;
+  font-size: 13px;
+  height: 100%;
+  padding: 50px;
+  text-transform: uppercase;
+  .box-sizing(border-box);
+}
+
+#cboxLoadedContent {
+  margin: 6px 5px 5px;
+  background: #fff;
+}
+
+#cboxTitle, #cboxCurrent {
+  position: absolute;
+  top: -32px;
+  color: darken(#7C7C7C, 2%);
+  height: 32px;
+  font: 16px/32px @font-family-base;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+#cboxTitle {
+  left: 0;
+  width: 100%;
+}
+
+#cboxTitle b {
+  display: block;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 150px;
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+#cboxCurrent {
+  right: 59px;
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+#cboxLoadingGraphic {
+  background: url('@{images}loading.gif') no-repeat 50% 50%;
+}
+
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
+  border: 0 none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  background: url('@{images}cbox-controls.png') no-repeat;
+  display: block;
+  position: absolute;
+  text-align: left;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {
+  outline: 0;
+}
+
+#cboxPrevious, #cboxNext {
+  top: 50%;
+  margin-top: -32px;
+  width: 29px;
+  height: 65px;
+}
+
+#cboxPrevious {
+  left: 5px;
+  background-position: -29px 0;
+}
+
+#cboxPrevious:hover {
+  background-position: -29px -65px;
+}
+
+#cboxNext {
+  right: 5px;
+  background-position: 0 0;
+}
+
+#cboxNext:hover {
+  background-position: 0 -65px;
+}
+
+#cboxClose, #cboxSlideshow {
+  width: 23px;
+  height: 23px;
+  top: -27px;
+}
+
+#cboxClose {
+  right: 5px;
+  background-position: -150px -25px;
+}
+
+#cboxClose:hover {
+  background-position: -150px 0;
+}
+
+#cboxSlideshow {
+  right: 32px;
+}
+
+.cboxSlideshow_off #cboxSlideshow {
+  background-position: -175px -25px;
+}
+
+.cboxSlideshow_off #cboxSlideshow:hover {
+  background-position: -175px 0;
+}
+
+.cboxSlideshow_on #cboxSlideshow {
+  background-position: -200px -25px;
+}
+
+.cboxSlideshow_on #cboxSlideshow:hover {
+  background-position: -200px 0;
+}

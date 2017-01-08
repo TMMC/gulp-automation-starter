@@ -1,0 +1,14 @@
+// == Rounded element
+@mixin rounded($dimension: 1.5em, $bg-color: transparent, $brd: 0 none, $txt-shadow: none, $shadow: none, $font-size: inherit) {
+  width: $dimension;
+  height: $dimension;
+  padding: 0;
+  text-align: center;
+  line-height: $dimension;
+  background-color: $bg-color;
+  border: $brd;
+  border-radius: 50%;
+  box-shadow: $shadow;
+  text-shadow: $txt-shadow;
+  font-size: $font-size;
+}

@@ -52,10 +52,12 @@ gulp.task('clean-res', function() {
     cfg.dirs.srcSass + '/_bootstrap.scss',
     cfg.dirs.srcSass + '/_lato-font.scss',
     '!' + cfg.dirs.srcSass,
+    '!' + cfg.dirs.srcSass + '/animate-css',
     cfg.dirs.srcLess + '/bootstrap/**/',
     cfg.dirs.srcLess + '/fontawesome/**/',
     cfg.dirs.srcLess + '/lato-font.less',
-    '!' + cfg.dirs.srcLess
+    '!' + cfg.dirs.srcLess,
+    '!' + cfg.dirs.srcLess + '/animate-css'
   ]);
 });
 
@@ -72,6 +74,7 @@ gulp.task('copy-resources', function() {
   var jsUtils = gulp.src([
       cfg.dirs.comps + '/jquery/dist/jquery{,.min}.js',
       cfg.dirs.comps + '/jquery-migrate/jquery-migrate{,.min}.js',
+      cfg.dirs.comps + '/jquery-easing/jquery.easing{,.min}.js',
       cfg.dirs.comps + '/respondjs/dest/respond{.src,.min}.js',
       cfg.dirs.comps + '/html5shiv/dist/html5shiv-printshiv{,.min}.js'
     ])
@@ -95,6 +98,11 @@ gulp.task('copy-resources', function() {
     var lfSrcs = gulp.src([ cfg.dirs.comps + '/lato-webfont/src/lato-font.less' ])
       .pipe(plugins.plumber())
       .pipe(gulp.dest(cfg.dirs.srcLess));
+    // Josefin Sans Font less file
+    var josefineSrcs = gulp.src([ cfg.dirs.comps + '/josefinsans-webfont/src/josefin-sans-font.less' ])
+      .pipe(plugins.plumber())
+      .pipe(plugins.rename('josefinsans-font.less'))
+      .pipe(gulp.dest(cfg.dirs.srcLess));
   } else {
     // Bootstrap sass files (v.3+)
     var bsSrcs = gulp.src([
@@ -116,11 +124,17 @@ gulp.task('copy-resources', function() {
       .pipe(plugins.plumber())
       .pipe(plugins.rename('_lato-font.scss'))
       .pipe(gulp.dest(cfg.dirs.srcSass));
+    // Josefin Sans Font sass file
+    var josefineSrcs = gulp.src([ cfg.dirs.comps + '/josefinsans-webfont/src/josefin-sans-font.scss' ])
+      .pipe(plugins.plumber())
+      .pipe(plugins.rename('_josefinsans-font.scss'))
+      .pipe(gulp.dest(cfg.dirs.srcSass));
   }
   // Fonts
   var webFonts = gulp.src([
       cfg.dirs.comps + '/bootstrap/dist/fonts/*.{eot,svg,woff,woff2,ttf,otf}',
       cfg.dirs.comps + '/lato-webfont/dist/fonts/*.{eot,svg,woff,woff2,ttf,otf}',
+      cfg.dirs.comps + '/josefinsans-webfont/dist/fonts/*.{eot,svg,woff,woff2,ttf,otf}',
       cfg.dirs.comps + '/font-awesome/fonts/*.{eot,svg,woff,woff2,ttf,otf}',
       cfg.dirs.srcFonts + '/*.{eot,svg,woff,woff2,ttf,otf}'
     ])
@@ -135,12 +149,23 @@ gulp.task('copy-resources', function() {
     ])
     .pipe(plugins.plumber())
     .pipe(gulp.dest(cfg.dirs.distBase));
-  // Images and icons
-  var gfx = gulp.src([ cfg.dirs.srcImg + '/*.{png,jpg,jpeg,gif,bmp,ico,svg}' ])
+  // Global images and icons
+  var gImages = gulp.src([ cfg.dirs.srcImgGlobal + '/**/*.{jpg,jpeg,png,gif,bmp,ico,svg}' ])
     .pipe(plugins.plumber())
+    .pipe(plugins.newer(cfg.dirs.distImg))
+    .pipe(plugins.imagemin(cfg.imageMinOptions))
+      .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
     .pipe(gulp.dest(cfg.dirs.distImg));
+  // Content images
+  var cImages = gulp.src([ cfg.dirs.srcImgContent + '/**/*.{jpg,jpeg,png,gif,bmp,svg}' ])
+    .pipe(plugins.plumber())
+    .pipe(plugins.newer(cfg.dirs.distContent))
+    .pipe(plugins.imagemin(cfg.imageMinOptions))
+      .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
+    .pipe(gulp.dest(cfg.dirs.distContent));
+
   // Return streams
-  return plugins.merge(jsUtils, bsSrcs, faSrcs, lfSrcs, webFonts, webDocs, gfx);
+  return plugins.merge(jsUtils, bsSrcs, faSrcs, lfSrcs, webFonts, webDocs, gImages, cImages);
 });
 
 // == jshint-src task: validate JS sources and gulpfile through jshint
@@ -162,25 +187,17 @@ gulp.task('jshint-dist', function() {
     .pipe(plugins.jshint.reporter('jshint-stylish'));
 });
 
-// == minify-js task: minify js files
-gulp.task('minify-js', function() {
-  return gulp.src([
-      cfg.dirs.distJs + '/**/*.js',
-      '!' + cfg.dirs.distJs + '/**/*.min.js'
-    ])
-    .pipe(plugins.plumber())
-    .pipe(plugins.uglify(cfg.uglifyOptions))
-      .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
-    .pipe(plugins.rename({ extname : '.min.js' }))
-    .pipe(gulp.dest(cfg.dirs.distJs));
-});
-
 // == compile-js task: concatenating and minifying JS files
 gulp.task('compile-js', function() {
   // Outputs non-minified and minified main.js file
   var mainJS = gulp.src([
       cfg.dirs.srcJsMain + '/*.js',
-      '!' + cfg.dirs.srcJsMain + '/main.05.livereload.js'
+      '!' + cfg.dirs.srcJsMain + '/04.parallax.js',     // Stellar not included in plugins
+      '!' + cfg.dirs.srcJsMain + '/07.flexslider.js',   // Flex slider not included in plugins
+      '!' + cfg.dirs.srcJsMain + '/08.slickslider.js',  // Slick slider not included in plugins
+      '!' + cfg.dirs.srcJsMain + '/09.jssorslider.js',  // Jssor slider not included in plugins
+      '!' + cfg.dirs.srcJsMain + '/10.colorbox.js',     // Colorbox not included in plugins
+      '!' + cfg.dirs.srcJsMain + '/12.livereload.js'    // LiveReload snippet as BrowserSync is used
     ])
     .pipe(plugins.plumber())
     .pipe(plugins.concat('main.js'))
@@ -192,24 +209,30 @@ gulp.task('compile-js', function() {
     .pipe(plugins.rename({ extname : '.min.js' }))
     .pipe(gulp.dest(cfg.dirs.distJs));
 
-    // Outputs non-minified and minified stylesguide.js file
-    var sgJS = gulp.src([
-        cfg.dirs.comps + '/holderjs/holder.js',
-        cfg.dirs.srcJsSg + '/**/*.js'
-      ])
-      .pipe(plugins.plumber())
-      .pipe(plugins.concat('styleguide.js'))
-      .pipe(plugins.header(bannerFile + '\n\n', { pkg : pkg } ))
-      .pipe(gulp.dest(cfg.dirs.distJs))
-      .pipe(plugins.uglify(cfg.uglifyOptions))
-        .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
-      .pipe(plugins.rename({ extname : '.min.js' }))
-      .pipe(gulp.dest(cfg.dirs.distJs));
+  // Outputs non-minified and minified stylesguide.js file
+  var sgJS = gulp.src([
+      cfg.dirs.comps + '/holderjs/holder.js',
+      cfg.dirs.srcJsSg + '/**/*.js'
+    ])
+    .pipe(plugins.plumber())
+    .pipe(plugins.concat('styleguide.js'))
+    .pipe(plugins.header(bannerFile + '\n\n', { pkg : pkg } ))
+    .pipe(gulp.dest(cfg.dirs.distJs))
+    .pipe(plugins.uglify(cfg.uglifyOptions))
+      .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
+    .pipe(plugins.rename({ extname : '.min.js' }))
+    .pipe(gulp.dest(cfg.dirs.distJs));
 
   // Custom plugins stream
   var pluginsJStream = gulp.src([
+    cfg.dirs.comps + '/html5boilerplate/dist/js/plugins.js',
     cfg.dirs.srcJsPlugins + '/**/*.js',
-    '!' + cfg.dirs.srcJsPlugins + '/plugins.01.chkjs.js'
+    // cfg.dirs.comps + '/one-page-nav/jquery.nav.js',          // No need for it with bootstrap scrollspy
+    // cfg.dirs.comps + '/jquery-colorbox/jquery.colorbox.js',
+    // cfg.dirs.comps + '/slick-carousel/slick/slick.js',
+    // cfg.dirs.comps + '/flex-slider/jquery.flexslider.js',
+    // cfg.dirs.comps + '/stellar/jquery.stellar.js',
+    '!' + cfg.dirs.srcJsPlugins + '/chkjs.js'                   // Exclude as jQuery is used to do it
   ]);
 
   // Create array of streams for Bootstrap JS
@@ -228,15 +251,15 @@ gulp.task('compile-js', function() {
   }
 
   // Outputs non-minified and minified plugins.js file
-  var pluginsJS = plugins.merge(pluginsJStream,twbsJsStream)
-  .pipe(plugins.plumber())
-  .pipe(plugins.concat('plugins.js'))
-  .pipe(plugins.header(bannerFile + '\n', { pkg : pkg } ))
-  .pipe(gulp.dest(cfg.dirs.distJs))
-  .pipe(plugins.uglify(cfg.uglifyOptions))
-    .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
-  .pipe(plugins.rename({ extname : '.min.js' }))
-  .pipe(gulp.dest(cfg.dirs.distJs));
+  var pluginsJS = plugins.merge(pluginsJStream, twbsJsStream)
+    .pipe(plugins.plumber())
+    .pipe(plugins.concat('plugins.js'))
+    .pipe(plugins.header(bannerFile + '\n', { pkg : pkg } ))
+    .pipe(gulp.dest(cfg.dirs.distJs))
+    .pipe(plugins.uglify(cfg.uglifyOptions))
+      .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
+    .pipe(plugins.rename({ extname : '.min.js' }))
+    .pipe(gulp.dest(cfg.dirs.distJs));
 
   // Return streams
   return plugins.merge(mainJS, sgJS, pluginsJS);
@@ -308,28 +331,29 @@ if (cfg.cssCompiler === 'sass') {
 
 // == optimize-img task: optimize images
 gulp.task('optimize-img', function(){
-  // Images in stylesheets
-  var cssImages = gulp.src([ cfg.dirs.distImg + '/**/*.{jpg,jpeg,png,gif,bmp,ico,svg}' ])
+  // Global images and icons
+  var globalImages = gulp.src([ cfg.dirs.srcImgGlobal + '/**/*.{jpg,jpeg,png,gif,bmp,ico,svg}' ])
     .pipe(plugins.plumber())
     .pipe(plugins.newer(cfg.dirs.distImg))
     .pipe(plugins.imagemin(cfg.imageMinOptions))
       .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
     .pipe(gulp.dest(cfg.dirs.distImg));
-  // Images in content
-  var contentImages = gulp.src([ cfg.dirs.distContent + '/**/*.{jpg,jpeg,png,gif,bmp,svg}' ])
+  // Content images
+  var contentImages = gulp.src([ cfg.dirs.srcImgContent + '/**/*.{jpg,jpeg,png,gif,bmp,svg}' ])
     .pipe(plugins.plumber())
     .pipe(plugins.newer(cfg.dirs.distContent))
     .pipe(plugins.imagemin(cfg.imageMinOptions))
       .on('error', function (err) { plugins.util.log(plugins.util.colors.bold.red(err)); this.emit('end'); })
     .pipe(gulp.dest(cfg.dirs.distContent));
+
   // Return streams
-  return plugins.merge(cssImages, contentImages);
+  return plugins.merge(globalImages, contentImages);
 });
 
 // == browser-sync task: start the built-in server & watch files triggering page reload
 gulp.task('browser-sync', function() {
   bs.init({
-    browser: ["firefox"],  // ["google chrome", "firefox", "opera", "vivaldi"]
+    browser: ["opera"],  // ["firefox", "google chrome", "opera", "vivaldi"]
     files: [
       cfg.dirs.distBase + '/*.{html,htaccess,php}',
       cfg.dirs.distCss + '/*.css',
@@ -358,10 +382,22 @@ gulp.task('browser-sync', function() {
   });
 });
 
-// == watch task: compile on change
+// == watch task: run tasks on changes for selected resources
 gulp.task('watch', function() {
-  // Watch for changes in unminified JS files in dist
-  gulp.watch(cfg.dirs.distJs + '/**/*.js', ['minify-js']);
+
+  // Watch for changes in JS files
+  gulp.watch([
+    cfg.dirs.srcJsMain + '/*.js',
+    cfg.dirs.srcJsPlugins + '/*.js',
+    cfg.dirs.srcJsSg + '/*.js'
+  ], ['compile-js']);
+
+  // Watch for new/changed images
+  gulp.watch([
+    cfg.dirs.srcImgGlobal + '/**/*.{jpg,jpeg,png,gif,bmp,ico,svg}',
+    cfg.dirs.srcImgContent + '/**/*.{jpg,jpeg,png,gif,bmp,svg}'
+  ], ['optimize-img']);
+
   // Watch for changes in sass or less sources
   if (cfg.cssCompiler === 'sass') {
     gulp.watch(cfg.dirs.srcSass + '/**/*.scss', ['compile-sass']);
@@ -370,7 +406,7 @@ gulp.task('watch', function() {
   }
 });
 
-// == default task: lists all the available tasks using `gulp --tasks-simple`
+// == default task: lists all the available tasks using `gulp --tasks-simple` (can be changed to `gulp --tasks`)
 gulp.task('default', function() {
   exec('gulp --tasks-simple', function (err, stdout, stderr) {
     plugins.util.log(plugins.util.colors.bold.cyan('Available tasks are:\n') + plugins.util.colors.cyan(stdout));
@@ -385,10 +421,12 @@ gulp.task('default', function() {
 gulp.task('clean-up', ['clean-comps', 'clean-res']);
 
 // == init-assets task
-gulp.task('init-assets', ['compile-js', 'build-css']);
+gulp.task('init-assets', ['compile-js', 'build-css', 'optimize-img']);
 
 // == watcher task
-gulp.task('watcher', ['browser-sync', 'watch']);
+gulp.task('watcher', function() {
+  plugins.runSequence('init-assets', 'watch', 'browser-sync');
+});
 
 // == init-project task
 gulp.task('init-project', function() {

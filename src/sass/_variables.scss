@@ -2,17 +2,107 @@
 // ==================================================
 
 // == Paths
-$fonts-path       : '../fonts/';
-$images-path      : '../img/';
+$fonts: '../fonts/' !default;
+$images: '../img/' !default;
+
+// == Sections stack
+$stack: 'section-a' 'section-b' 'section-c' !default;
+$stack-initial-index: 11 !default;
 
 // == Fonts
-$font-stack-sans-serif : LatoWeb, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-stack-serif      : Georgia, "Times New Roman", Times, serif;
-$font-stack-monospace  : Menlo, Monaco, Consolas, "Courier New", monospace;
-$font-family-base      : $font-stack-sans-serif;
-$font-family-heading   : $font-stack-serif;
+$font-stack-sans-serif: LatoWeb, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+// $font-stack-sans-serif-alt: JosefinSansWeb, $font-stack-sans-serif !default;
+$font-stack-serif: Georgia, "Times New Roman", Times, serif !default;
+$font-stack-monospace: Menlo, Monaco, Consolas, "Courier New", monospace !default;
+
+// == Icons
+// First icon font (Font Awesome)
+$font-icon-primary: FontAwesomeWeb !default;
+$font-icon-primary-font-name: "fontawesome-webfont" !default;
+$font-icon-primary-svg-id: "fontawesomeregular" !default;
+$font-icon-primary-prefix: icon !default;
+// Second icon font (Glyphicons Halfings)
+$font-icon-secondary: GlyphIconWeb !default;
+$font-icon-secondary-font-name: "glyphicons-halflings-regular" !default;
+$font-icon-secondary-svg-id: "glyphicons_halflingsregular" !default;
+$font-icon-secondary-prefix: glyphicon !default;
 
 // == Colors
-$light-base: #fff;
-$body-bg: $light-base;
-$body-txt: #333;
+$light-base: #fff !default;
+
+// == Branding colors
+$branding-primary: darken(#ed2025,20%) !default;
+$branding-secondary: #171026 !default;
+$branding-complementary-a: #d6d8dc !default;
+$branding-complementary-b: $light-base !default;
+
+// == Overwrite Bootstrap (change it in bootstrap/_variables.scss)
+// = Typography
+// $font-family-sans-serif:  $font-stack-sans-serif !default;
+// $font-family-serif:       $font-stack-serif !default;
+// $font-family-monospace:   $font-stack-monospace !default;
+// $font-size-large:         ceil(($font-size-base * 1.125)) !default; // ~17.5px
+// $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
+// $font-size-h1:            floor(($font-size-base * 2)) !default; // 28px
+// $font-size-h2:            floor(($font-size-base * 1.5)) !default; // 21px
+// $font-size-h3:            ceil(($font-size-base * 1.25)) !default; // ~17.5px
+// $font-size-h4:            ceil(($font-size-base * 1.125)) !default; // ~15.75px
+// $font-size-h5:            $font-size-base !default;
+// $font-size-h6:            ceil(($font-size-base * 0.875)) !default; // ~12.25px
+// = Iconography
+// $icon-font-path: $fonts !default;
+// $icon-font-name: $font-icon-secondary-font-name !default;
+// $icon-font-svg-id: $font-icon-secondary-svg-id !default;
+// = Miscalanous
+// $border-radius-base:        3px !default;
+// $border-radius-large:       4px !default;
+// $border-radius-small:       2px !default;
+// $grid-float-breakpoint:     $screen-md-min !default;
+// $navbar-height:             76px !default;
+// $thumbnail-border-radius:   $border-radius-small !default;
+
+// == IE warning
+$ie-warning-border: #f1a899 !default;
+$ie-warning-bg: #fddfdf !default;
+$ie-warning-color: darken($ie-warning-border, 30%) !default;
+$ie-warning-margin-vertical: 0 !default;
+$ie-warning-margin-horizontal: 0 !default;
+$ie-warning-padding-vertical: 0 !default;
+$ie-warning-padding-horizontal: 0 !default;
+
+// == Black/dark button
+$btn-inverse-color: darken($light-base, 5%) !default;
+$btn-inverse-bg: lighten(#000, 13.5%) !default; // $gray-darker
+$btn-inverse-border: darken($btn-inverse-bg,7.5%) !default;
+
+// == Secondary button
+$btn-secondary-color: darken($light-base, 5%) !default;
+$btn-secondary-bg: lighten(#000, 13.5%) !default;
+$btn-secondary-border: darken($btn-secondary-bg, 10%) !default;
+
+// == Carousel indicators
+$carousel-indicator-bg: $light-base !default; // $carousel-indicator-border-color
+$carousel-indicator-hover-bg: $light-base !default; // $carousel-indicator-active-bg
+
+//== Navbar toggle
+$navbar-default-toggle-normal-bg: darken($light-base, 1%) !default;
+$navbar-inverse-toggle-normal-bg: darken($branding-primary, 1%) !default;
+$navbar-default-toggle-icon-bar-hover-bg: darken($light-base, 1%) !default;
+$navbar-inverse-toggle-icon-bar-hover-bg: darken($branding-primary, 1%) !default;
+
+//== Slick slider
+$slick-font-family: $font-icon-primary !default; // 'slick'
+$slick-font-name: $font-icon-primary-font-name !default;  // 'slick'
+$slick-font-svg-id: $font-icon-primary-svg-id !default;  // 'slick'
+$slick-prev-character: "\f104" !default; // $fa-var-angle-left
+$slick-next-character: "\f105" !default; // $fa-var-angle-right
+$slick-dot-character: "\f111" !default; // $fa-var-circle
+
+// == WooThemes FlexSlider
+$font-path: $fonts !default;
+$font-name: $font-icon-primary !default; // 'flexslider-icon'
+$font-file-name: $font-icon-primary-font-name !default;  // 'flexslider-icon'
+$flexslider-transition: 1s ease !default;
+$flexslider-bg: mix(darken($branding-complementary-b,.75%), $branding-secondary, 25%) !default;
+$flex-viewport-max-height: 2000px !default;
+$flex-viewport-loading-max-height: 300px !default;

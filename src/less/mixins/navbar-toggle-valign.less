@@ -1,0 +1,6 @@
+// == Align vertically navbar toggle button
+.navbar-toggle-valign(@navbar-h: 0px; @toggle-h: 0px;) {
+  @computed: ((@navbar-h - @toggle-h) / 2);
+  margin-top: @computed;
+  margin-bottom: @computed;
+}

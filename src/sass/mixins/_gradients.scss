@@ -1,0 +1,68 @@
+// CSS3 Gradients
+// --------------------------------------------------
+
+// == Two colors background gradients
+// @param $start-color (color) - start color (hex|rgb|rgba|hsl)
+// @param $end-color (color) - end color (hex|rgb|rgba|hsl)
+// @param $orientation (string) - type of gradient (`vertical`, `horizontal`, `directional`, default `null` = `radial`)
+// @param $start-pos (number|length|percentage) - start color position, unitless value is converted to percentage
+// @param $end-pos (number|length|percentage) - end color position, unitless value is converted to percentage
+// @param $deg (number|degrees) - angle for directional gradient (default `null` = 0deg), unitless value is converted to degrees
+@mixin bg-gradient($start-color, $end-color, $orientation: null, $start-pos: null, $end-pos: null, $deg: null) {
+
+    // background-color: mix($start-color,$end-color,50%);
+
+    // If $start-pos is unitless convert it to percentage
+    @if (($start-pos != null) and unitless($start-pos)) { $start-pos: ($start-pos*1%); }
+    // If $end-pos is unitless convert it to percentage
+    @if (($end-pos != null) and unitless($end-pos)) { $end-pos: ($end-pos*1%); }
+
+    @if $orientation == 'vertical' {
+      background-image: -moz-linear-gradient(top, $start-color $start-pos, $end-color $end-pos);
+      background-image: -webkit-linear-gradient(top, $start-color $start-pos, $end-color $end-pos);
+      background-image: -o-linear-gradient(top, $start-color $start-pos, $end-color $end-pos);  // Opera 12
+      background-image: linear-gradient(to bottom, $start-color $start-pos, $end-color $end-pos);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+    } @else if $orientation == 'horizontal' {
+      background-image: -moz-linear-gradient(left, $start-color $start-pos, $end-color $end-pos);
+      background-image: -webkit-linear-gradient(left, $start-color $start-pos, $end-color $end-pos);
+      background-image: -o-linear-gradient(left, $start-color $start-pos, $end-color $end-pos);  // Opera 12
+      background-image: linear-gradient(to right, $start-color $start-pos, $end-color $end-pos);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+    } @else if $orientation == 'directional' {
+      @if ($deg == null) { $deg: 0; }
+      @if unitless($deg) { $deg: ($deg*1deg); }
+      background-image: -moz-linear-gradient($deg, $start-color $start-pos, $end-color $end-pos);
+      background-image: -webkit-linear-gradient($deg, $start-color $start-pos, $end-color $end-pos);
+      background-image: -o-linear-gradient($deg, $start-color $start-pos, $end-color $end-pos); // Opera 12
+      background-image: linear-gradient($deg, $start-color $start-pos, $end-color $end-pos);
+      background-repeat: repeat-x;
+    } @else { // radial
+      background-image: -moz-radial-gradient(center, ellipse cover, $start-color $start-pos, $end-color $end-pos);
+      background-image: -webkit-radial-gradient(center, ellipse cover, $start-color $start-pos, $end-color $end-pos);
+      background-image: -o-radial-gradient(center, ellipse cover, $start-color $start-pos, $end-color $end-pos);
+      background-image: radial-gradient(ellipse at center, $start-color $start-pos, $end-color $end-pos);
+      background-repeat: no-repeat;
+      @include _prefix((background-size: cover), (webkit moz o));
+    }
+}
+
+// == Simulate line with gap using gradient
+// @param $color (color) - line color (hex)
+// @param $color-opacity (int|float) - color opacity level for rgba, default 1 (fully opaque)
+// @param $gap-start (number|length|percentage) - line gap start position, unitless value is converted to percentage
+// @param $gap-end (number|length|percentage) - line gap end position, unitless value is converted to percentage
+// @param $line-size (string|list) - line dimensions (any css supported value for background size)
+@mixin line-with-gap($color: #000, $color-opacity: 1, $gap-start: 45, $gap-end: 55, $line-size: 100% 1px) {
+  @if unitless($gap-start) {$gap-start: ($gap-start*1%); }
+  @if unitless($gap-end) {$gap-end: ($gap-end*1%); }
+  background-image: -webkit-linear-gradient(left, rgba($color, $color-opacity) $gap-start, rgba($color, 0) $gap-start, rgba($color, 0) $gap-end, rgba($color, $color-opacity) $gap-end);
+  background-image: -moz-linear-gradient(left, rgba($color, $color-opacity) $gap-start, rgba($color, 0) $gap-start, rgba($color, 0) $gap-end, rgba($color, $color-opacity) $gap-end);
+  background-image: -o-linear-gradient(left, rgba($color, $color-opacity) $gap-start, rgba($color, 0) $gap-start, rgba($color, 0) $gap-end, rgba($color, $color-opacity) $gap-end);
+  background-image: linear-gradient(to right, rgba($color, $color-opacity) $gap-start, rgba($color, 0) $gap-start, rgba($color, 0) $gap-end, rgba($color, $color-opacity) $gap-end);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  @include _prefix((background-size: #{$line-size}), (webkit moz o));
+}

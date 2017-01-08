@@ -1,4 +1,19 @@
 // == Mixins
 // ==================================================
 // @import 'mixins/mixin-name';
+
+// Base
+@import 'mixins/utils';
+@import 'mixins/polyfills';
+
+// Polyfills dependent
+@import 'mixins/rounded';
+@import 'mixins/bg-image-variants';
+@import 'mixins/gradients';
+@import 'mixins/parallax';
+
+// Miscellaneous
 @import 'mixins/vertical-spaces';
+@import 'mixins/fancy-lists';
+@import 'mixins/create-stack';
+@import 'mixins/navbar-toggle-valign';

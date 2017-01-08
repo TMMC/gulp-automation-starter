@@ -10,7 +10,7 @@
 }
 
 body {
-  padding-top: 0; //78px;
+  padding-top: 76px;
   // margin: 0 auto;
   // width: 80%;
   // background-color: FloralWhite;
@@ -31,22 +31,22 @@ body {
 // }
 
 // == By default animate those elements
-// a,
-// .btn,
-// .form-control,
-// a > *,
+a,
+.btn,
+.form-control,
+a > *,
 // .camera_prev,
 // .camera_next,
-// .navbar-toggle,
-// .navbar-toggle .icon-bar {
-//   @transition: .3s ease-in;
-//   .transition(@transition);
-//   &.active, .active > &,
-//   &.disabled, &[disabled],
-//   .disabled &, [disabled] & {
-//     .transition(none);
-//   }
-// }
+.navbar-toggle,
+.navbar-toggle .icon-bar {
+  @transition: .3s ease-in;
+  .transition(@transition);
+  &.active, .active > &,
+  &.disabled, &[disabled],
+  .disabled &, [disabled] & {
+    .transition(none);
+  }
+}
 
 textarea {
   resize: vertical;
@@ -60,38 +60,43 @@ label[for] {
 // --------------------------------------------------
 
 // == Outdated IE warning
-// #warning-ie-outdated {
-//   border-radius: 0;
-//   background-color: @warning-ie-bg;
-//   border: 0 none;
-//   border-bottom: 1px solid @warning-ie-border;
-//   color: @warning-ie-color;
-//   margin: 0;
-//   padding: @warning-ie-padding;
-//   position: relative;
-//   width: 100%;
-//   text-align: center;
-//
-//   .close {
-//     position: absolute;
-//     right: 15px;
-//     top: 50%;
-//     margin-top: -11px;
-//   }
-//
-//   p {
-//     margin: 0 @warning-ie-margin-r 0 0;
-//
-//     a {
-//       color: saturate(lighten(@warning-ie-color, 10%), 10%);
-//       text-decoration: underline;
-//       &:hover,
-//       &:focus {
-//         color: saturate(darken(@warning-ie-color, 10%), 10%);
-//       }
-//     }
-//   }
-// }
+#ie-warning-outdated {
+  border-radius: 0;
+  background-color: @ie-warning-bg;
+  border: 0 none;
+  border-bottom: 1px solid @ie-warning-border;
+  color: @ie-warning-color;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1031;
+  width: 100%;
+  text-align: center;
+
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -11px;
+
+    i { font-style: normal; }
+  }
+
+  p {
+    margin: @ie-warning-margin-vertical @ie-warning-margin-horizontal;
+    padding: @ie-warning-padding-vertical @ie-warning-padding-horizontal;
+    a {
+      color: darken(@ie-warning-color, 5%);
+      text-decoration: underline;
+      &:hover,
+      &:focus {
+        color: darken(@ie-warning-color, 15%);
+      }
+    }
+  }
+}
 
 // == Accessibility link
 #skip-link {
@@ -103,11 +108,31 @@ label[for] {
 .text-bolded { font-weight: bold; }
 .text-italic { font-style: italic; }
 
+// == Icons
+.@{font-icon-primary-prefix} { // Catchall baseclass
+  display: inline-block;
+  font-family: @font-icon-primary;
+  font-size: inherit;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1; // @fa-font-size-base/@fa-line-height-base
+  position: relative;
+  text-rendering: auto; // optimizelegibility throws things off #1094
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class*="@{font-icon-secondary-prefix}-"] {
+  font-family: @font-icon-secondary;
+  top: 1px;
+}
+
 // == Vertical spacing classes
 .create-spacing-classes();
 
 // == Extra lists
-.list-markers();
+.create-fancy-lists();
 
 .dl-inline {
   dd, dt {

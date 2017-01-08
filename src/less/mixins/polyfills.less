@@ -1,0 +1,124 @@
+// CSS3 polyfills
+// --------------------------------------------------
+
+// == Tabulator size
+.tab-size(@spaces: 2px) {
+     -moz-tab-size: @spaces;
+      -ms-tab-size: @spaces;
+       -o-tab-size: @spaces;
+  -webkit-tab-size: @spaces;
+          tab-size: @spaces;
+}
+
+// == Border radius
+.border-radius(@radius) {
+     -moz-border-radius: @radius;
+       -o-border-radius: @radius;
+  -webkit-border-radius: @radius;
+          border-radius: @radius;
+}
+
+// == Box shadow
+.box-shadow(@shadow) {
+     -moz-box-shadow: @shadow;
+       -o-box-shadow: @shadow;
+  -webkit-box-shadow: @shadow;
+          box-shadow: @shadow;
+}
+
+// == Filters
+.css-filters(@filters-set) {
+     -moz-filter: @filters-set;
+      -ms-filter: @filters-set;
+       -o-filter: @filters-set;
+  -webkit-filter: @filters-set;
+          filter: @filters-set;
+}
+
+// == Multiple columns
+.multicol(@c-width:auto;@c-count:auto;@c-gap:normal;@c-rule-width:0;@c-rule-style:none;@c-rule-color:transparent;@c-fill:auto) {
+  // Columns width and count
+  -moz-columns: @c-width @c-count;      // Firefox
+  -ms-columns: @c-width @c-count;       // Internet Explorer
+  -o-columns: @c-width @c-count;        // Old Opera
+  -webkit-columns: @c-width @c-count;   // Chrome, Safari, New Opera
+  columns: @c-width @c-count;           // Standard W3C syntax
+  // Columns gap width
+  -moz-column-gap: @c-gap;              // Firefox
+  -ms-column-gap: @c-gap;               // Internet Explorer
+  -o-column-gap: @c-gap;                // Old Opera
+  -webkit-column-gap: @c-gap;           // Chrome, Safari, New Opera
+  column-gap: @c-gap;                   // Standard W3C syntax
+  // Columns rule width, style and color
+  -moz-column-rule: @c-rule-width @c-rule-style @c-rule-color;    // Firefox
+  -ms-column-rule: @c-rule-width @c-rule-style @c-rule-color;     // Internet Explorer
+  -o-column-rule: @c-rule-width @c-rule-style @c-rule-color;      // Old Opera
+  -webkit-column-rule: @c-rule-width @c-rule-style @c-rule-color; // Chrome, Safari, New Opera
+  column-rule: @c-rule-width @c-rule-style @c-rule-color;         // Standard W3C syntax
+  // Columns fill
+  -moz-column-fill: @c-fill;    // Firefox
+  -ms-column-fill: @c-fill;     // Internet Explorer
+  -o-column-fill: @c-fill;      // Old Opera
+  -webkit-column-fill: @c-fill; // Chrome, Safari, New Opera
+  column-fill: @c-fill;         // Standard W3C syntax
+}
+
+// == Animation play state
+// @play-state: running | paused
+.animation-play-state(@play-state) {
+     -moz-animation-play-state: @play-state;
+      -ms-animation-play-state: @play-state;
+       -o-animation-play-state: @play-state;
+  -webkit-animation-play-state: @play-state;
+          animation-play-state: @play-state;
+}
+
+// == Multiple transform
+//@ratio: 0.5,0.5;
+//@distance: 68px,60px;
+//@transform: scale(@ratio) translate(@distance);
+.multiple-transform(@transform) {
+  -webkit-transform: @transform;
+      -ms-transform: @transform; // IE9 only
+       -o-transform: @transform;
+     -moz-transform: @transform;
+          transform: @transform;
+}
+
+// == Keyframes for animations
+// --------------------------------------------------
+// @name: string;
+// @steps: detached ruleset;
+//
+// @name-example: nameExample;
+// @steps-example: {
+//     0% { opacity: 1; }
+//    50% { opacity: 0; }
+//   100% { opacity: 1; }
+// };
+//
+// .keyframes(@name-example; @steps-example);
+//
+// Shorthand: animation-name animation-duratio animation-timing-function animation-delay animation-iteration-count <animation-direction> <animation-fill-mode> <animation-play-state>
+//
+// @animation-example: @name-example 4s linear 1s infinite;
+// .animated-el { .animation(@animation-example); }
+// --------------------------------------------------
+
+.keyframes(@name; @steps) when (isruleset(@steps)) {
+  @-moz-keyframes @name { // Mozilla Firefox
+    @steps();
+  }
+  @-ms-keyframes @name { // Internet Explorer
+    @steps();
+  }
+  @-o-keyframes @name { // Pre-webkit Opera
+    @steps();
+  }
+  @-webkit-keyframes @name { // Webkit
+    @steps();
+  }
+  @keyframes @name { // W3C aka standard
+    @steps();
+  }
+}

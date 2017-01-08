@@ -1,8 +1,11 @@
-// == Variables and mixins
+// == Variables
 @import "variables";
-@import "mixins";
 @import "bootstrap/variables";
+@import "fontawesome/variables";
+// == Mixins
+@import "mixins";
 @import "bootstrap/mixins";
+@import "fontawesome/mixins";
 
 // == Global
 body {

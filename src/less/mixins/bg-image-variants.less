@@ -1,0 +1,10 @@
+// == Background image(s) variations
+// All variable can be set for multiple images, @images must be defined
+// @images: url('@{@images}first-img.png'), url('@{@images}second-img.png');
+// Prepared for cover image by default
+.bg-img-variant(@images; @attachment: fixed; @repeat: no-repeat; @size: cover) {
+  background-image: @images;
+  background-attachment: @attachment;
+  background-repeat: @repeat;
+  background-size: @size;
+}

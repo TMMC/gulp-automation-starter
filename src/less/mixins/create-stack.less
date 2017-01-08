@@ -1,0 +1,12 @@
+// == Auto generate apropriate z-index
+// --------------------------------------------------
+// @elements: list of IDs w/out hashes, ie.: id-01, id-0,
+// @z-index: int
+// --------------------------------------------------
+.create-stack(@elements; @z-index; @count: length(@elements); @index: 1) when (@index =< @count) {
+  @el-id: extract(@stack, @index);             // Extract id name on given position.
+  #@{el-id} { z-index: (@z-index - @index); }  // Define z-index
+
+  // Increment to iterate.
+  .create-stack(@elements; @z-index; @count; (@index + 1));
+}
