@@ -11,6 +11,9 @@
 ## Use PHP 7.0 (zendbox.pl, comment out on localhost)
 # AddHandler application/x-httpd-php70 .php
 
+## Use PHP 5.5 (zendbox.pl, comment out on localhost)
+# AddHandler application/x-httpd-php55 .php
+
 ## Use PHP 5.6 (zendbox.pl, comment out on localhost)
 # AddHandler application/x-httpd-php56 .php
 
@@ -122,7 +125,30 @@ DirectoryIndex index.php index.html index.htm index.xhtml index.xml
 #   RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
-## Serve resources with far-future expires headers (comment out on localhost).
+# ----------------------------------------------------------------------
+#  Setting PHP values/flags on hosted services
+# ----------------------------------------------------------------------
+#
+## PHP as Apache module
+# php_value upload_max_filesize 10M
+# php_value post_max_size 10M
+# php_value max_execution_time 120
+# php_value max_input_time 120
+# php_value max_execution_time 60
+# php_value max_input_time 60
+#
+## PHP as (Fast)CGI
+# php_flag upload_max_filesize 10M
+# php_flag post_max_size 10M
+# php_flag max_execution_time 120
+# php_flag max_input_time 120
+# php_flag max_execution_time 60
+# php_flag max_input_time 60
+
+# ----------------------------------------------------------------------
+#  Serve resources with far-future expires headers (comment out on localhost).
+# ----------------------------------------------------------------------
+#
 # <IfModule mod_expires.c>
 #   # Enable expirations
 #   ExpiresActive On

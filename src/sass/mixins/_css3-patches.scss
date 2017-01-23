@@ -1,11 +1,19 @@
-// CSS3 polyfills
-// --------------------------------------------------
+// CSS3 patches
+// ------------------------------------------------------------
+// Many of those mixins are inspired, based on or modified
+// mixins from Bootstrap v3.3.7 and Andy.scss v1.1
+
+// == Most common variants of browsers to support in mixins
+$vendors-overkill: webkit khtml moz ms o;
+$vendors-extended: webkit moz ms o;
+$vendors-base: webkit moz ms;
+$vendors-min: webkit moz;
 
 // == Prefixes
 // Prefix choosen declarations for browsers you want to support.
 // @param $declarations (map) - sass map of css declarations to prefix
 // @param $property-prefixes (list) - space separeted sass list of vendor prefixes (w/out dashes)
-@mixin _prefix($declarations, $property-prefixes: webkit moz ms o) {
+@mixin prefix($declarations, $property-prefixes: (webkit moz ms o)) {
   @each $property, $value in $declarations {          // Take property and value from each declaration
     @each $property-prefix in $property-prefixes {    // Take each vendor prefix from list
       -#{$property-prefix}-#{$property}: #{$value};   // Output each declaration with each property prefixed
@@ -14,15 +22,28 @@
   }
 }
 
+// == Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: alpha(opacity=$opacity-ie);
+}
+
 // == Input/textarea placeholder text
-@mixin placeholder($color: #ddd, $opacity: .95) {
+@mixin placeholder($color: #ddd, $opacity: .95, $opacity-focus: 0, $opacity-disabled: 1) {
 
   &::-webkit-input-placeholder  { // Safari, Chrome, Opera (webkit based)
     color: $color;
     opacity: $opacity;
   }
 
-  &::-moz-placeholder { // Firefox (Gecko based)
+  &:-moz-placeholder { // Firefox
+    color: $color;
+    opacity: $opacity;
+  }
+
+  &::-moz-placeholder { // Firefox 19+
     color: $color;
     opacity: $opacity;
   }
@@ -33,9 +54,10 @@
   }
 
   &:focus { // focus
-    &::-webkit-input-placeholder { opacity: 0; }
-    &::-moz-placeholder { opacity: 0; }
-    &:-ms-input-placeholder { opacity: 0; }
+    &::-webkit-input-placeholder { opacity: $opacity-focus; }
+    &:-moz-placeholder { opacity: $opacity-focus; }
+    &::-moz-placeholder { opacity: $opacity-focus; }
+    &:-ms-input-placeholder { opacity: $opacity-focus; }
   }
 
   &.disabled,
@@ -43,15 +65,19 @@
     &, &:focus {
       &::-webkit-input-placeholder {
         color: darken($color, 25%) !important;
-        opacity: 1 !important;
+        opacity: $opacity-disabled !important;
+      }
+      &:-moz-placeholder {
+        color: darken($color, 25%) !important;
+        opacity: $opacity-disabled !important;
       }
       &::-moz-placeholder {
         color: darken($color, 25%) !important;
-        opacity: 1 !important;
+        opacity: $opacity-disabled !important;
       }
       &:-ms-input-placeholder {
         color: darken($color, 25%) !important;
-        opacity: 1 !important;
+        opacity: $opacity-disabled !important;
       }
     }
   }
@@ -60,13 +86,13 @@
 // == Box sizing
 // @param $boxmodel (border-box|padding-box|content-box)
 @mixin box-sizing($boxmodel) {
-  @include _prefix((box-sizing: $boxmodel), (webkit moz ms));
+  @include prefix((box-sizing: $boxmodel), (webkit moz ms));
 }
 
 // == Background clip
 // @param $boxmodel (border-box|padding-box|content-box)
 @mixin background-clip($boxmodel) {
-  @include _prefix((background-clip: $boxmodel), (webkit moz ms));
+  @include prefix((background-clip: $boxmodel), (webkit moz ms));
 }
 
 // == Background size
@@ -77,121 +103,206 @@
 // .bg-02 { @include _background-size(200px auto); }
 // .bg-03 { @include _background-size(cover); }
 // .bg-04 { @include _background-size(180px 120px, cover); }
-@mixin _background-size($size...) {
-  @include _prefix((background-size: $size), (webkit moz ms));
+@mixin background-size($size...) {
+  @include prefix((background-size: $size), (webkit moz ms));
 }
 
 // == User select
 // @param $select (none|text) - text selection disabled/enabled
 @mixin user-select($select) {
-  @include _prefix((user-select: $select), (webkit moz ms o));
+  @include prefix((user-select: $select), (webkit moz ms o));
 }
 
 // == Tabulator size
 // @param $size (number|length|initial|inherit) - number of spaces displayed for each tab or length of each tab
 @mixin tab-size($size: 2) {
-  @include _prefix((tab-size: $size), (webkit moz ms o));
+  @include prefix((tab-size: $size), (webkit moz ms o));
+}
+
+// == Optional hyphenation
+@mixin hyphens($mode: auto) {
+  word-wrap: break-word;
+  @include prefix((hyphens: $mode), (webkit moz ms o));
 }
 
 // == Border radius (all)
 @mixin border-radius($radius) {
-  @include _prefix((border-radius: $radius), (webkit moz));
+  @include prefix((border-radius: $radius), (webkit moz));
 }
 
 // == Border radius (separated, in order)
 @mixin top-left-radius($radius) {
-  @include _prefix((border-top-left-radius: $radius), (webkit moz));
+  @include prefix((border-top-left-radius: $radius), (webkit moz));
 }
 
 @mixin top-right-radius($radius) {
-  @include _prefix((border-top-right-radius: $radius), (webkit moz));
+  @include prefix((border-top-right-radius: $radius), (webkit moz));
 }
 
 @mixin bottom-right-radius($radius) {
-  @include _prefix((border-bottom-right-radius: $radius), (webkit moz));
+  @include prefix((border-bottom-right-radius: $radius), (webkit moz));
 }
 
 @mixin bottom-left-radius($radius) {
-  @include _prefix((border-bottom-left-radius: $radius), (webkit moz));
+  @include prefix((border-bottom-left-radius: $radius), (webkit moz));
 }
 
 // == Box shadow
 @mixin box-shadow($shadow...) {
-  @include _prefix((box-shadow: $shadow), (webkit moz));
+  @include prefix((box-shadow: $shadow), (webkit moz));
 }
 
 // == Filters
-@mixin css-filters($filters-set...) {
-  @include _prefix((filter: $filters-set), (webkit moz ms));
+@mixin css-filters($filters...) {
+  @include prefix((filter: $filters), (webkit moz ms));
 }
 
 // == Multiple columns
 @mixin multicol($c-width: auto, $c-count: auto, $c-gap: normal, $c-rule-width: 0, $c-rule-style: none, $c-rule-color: transparent, $c-fill: auto) {
-  @include _prefix((columns: $c-width $c-count, column-gap: $c-gap, column-rule: $c-rule-width $c-rule-style $c-rule-color, column-fill: $c-fill), (webkit moz ms));
+  @include prefix((columns: $c-width $c-count, column-gap: $c-gap, column-rule: $c-rule-width $c-rule-style $c-rule-color, column-fill: $c-fill), (webkit moz ms));
 }
 
 // == Transformations
-@mixin translate3d($x, $y, $z) {
-  @include _prefix((transform: translate3d($x, $y, $z)), (webkit moz));
-}
+// ------------------------------------------------------------
 
-// == Multiple transformations
-// @param $transform (css transformation) - ie.: scale($ratio) translate($distance);
-// @param $ratio (number) - ie.: .5,.5;
-// @param $distance (px|%|em|rem) - ie.: 68px,60px;
-@mixin _transform($transform) {
-  @include _prefix((transform: $transform), (webkit moz ms));
+// Scale
+@mixin scale($ratio...) {
+  @include prefix((transform: scale($ratio)), (webkit moz ms));
+}
+// Scale X
+@mixin scaleX($ratio) {
+  @include prefix((transform: scaleX($ratio)), (webkit moz ms));
+}
+// Scale Y
+@mixin scaleY($ratio) {
+  @include prefix((transform: scaleY($ratio)), (webkit moz ms));
+}
+// Skew
+@mixin skew($x, $y) {
+  @include prefix((transform: skewX($x) skewY($y)), (webkit moz ms));
+}
+// Translate 2D
+@mixin translate($x, $y) {
+  @include prefix((transform: translate($x, $y)), (webkit moz ms));
+}
+// Translate 3D
+@mixin translate3d($x, $y, $z) {
+  @include prefix((transform: translate3d($x, $y, $z)), (webkit moz ms));
+}
+// Rotate
+@mixin rotate($degrees) {
+  @include prefix((transform: rotate($degrees)), (webkit moz ms));
+}
+// Rotate X
+@mixin rotateX($degrees) {
+  @include prefix((transform: rotateX($degrees)), (webkit moz ms));
+}
+// Rotate Y
+@mixin rotateY($degrees) {
+  @include prefix((transform: rotateY($degrees)), (webkit moz ms));
 }
 
 // == Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
 // @param $visibility (visible|hidden)
 @mixin backface-visibility($visibility) {
-  @include _prefix((backface-visibility: $visibility), (webkit moz));
+  @include prefix((backface-visibility: $visibility), (webkit moz ms));
+}
+
+// == Perspective
+@mixin perspective($perspective) {
+  @include prefix((perspective: $perspective), (webkit moz ms));
+}
+
+// == Perspective origin
+@mixin perspective-origin($origin) {
+  @include prefix((perspective-origin: $origin), (webkit moz ms));
+}
+
+// == Transformation origin
+@mixin transform-origin($origin) {
+  @include prefix((transform-origin: $origin), (webkit moz ms));
+}
+
+// == Multiple transformations
+// @param $transform (css transformation) - ie.: scale($ratio) translate($distance);
+// @param $ratio (number) - ie.: .5,.5;
+// @param $distance (px|%|em|rem) - ie.: 68px,60px;
+@mixin transform($transformations...) {
+  @include prefix((transform: $transformations), (webkit moz ms));
+}
+
+// == Transitions
+// ------------------------------------------------------------
+
+@mixin transition($transition...) {
+  @include prefix((transition: $transition), (webkit moz ms));
+}
+
+@mixin transition-property($transition-property...) {
+  @include prefix((transition-property: $transition-property), (webkit moz ms));
+}
+
+@mixin transition-delay($transition-delay) {
+  @include prefix((transition-delay: $transition-delay), (webkit moz ms));
+}
+
+@mixin transition-duration($transition-duration...) {
+  @include prefix((transition-duration: $transition-duration), (webkit moz ms));
+}
+
+@mixin transition-timing-function($timing-function) {
+  @include prefix((transition-timing-function: $timing-function), (webkit moz ms));
+}
+
+@mixin transition-transform($transition...) { // Rethink @mixin `prefix` for cases like this
+  -webkit-transition: -webkit-transform $transition;
+     -moz-transition: -moz-transform $transition;
+       -ms-transition: -o-transform $transition;
+          transition: transform $transition;
 }
 
 // == Animations
-// --------------------------------------------------
+// ------------------------------------------------------------
 
 @mixin animation($animation) {
-  @include _prefix((animation: $animation), (webkit moz));
+  @include prefix((animation: $animation), (webkit moz ms));
 }
 
 @mixin animation-name($name) {
-  @include _prefix((animation-name: $name), (webkit moz));
+  @include prefix((animation-name: $name), (webkit moz ms));
 }
 
 @mixin animation-duration($duration) {
-  @include _prefix((animation-duration: $duration), (webkit moz));
+  @include prefix((animation-duration: $duration), (webkit moz ms));
 }
 
 @mixin animation-timing-function($timing-function) {
-  @include _prefix((animation-timing-function: $timing-function), (webkit moz));
+  @include prefix((animation-timing-function: $timing-function), (webkit moz ms));
 }
 
 @mixin animation-delay($delay) {
-  @include _prefix((animation-delay: $delay), (webkit moz));
+  @include prefix((animation-delay: $delay), (webkit moz ms));
 }
 
 @mixin animation-iteration-count($iteration-count) {
-  @include _prefix((animation-iteration-count: $iteration-count), (webkit moz));
+  @include prefix((animation-iteration-count: $iteration-count), (webkit moz ms));
 }
 
 @mixin animation-direction($direction) {
-  @include _prefix((animation-direction: $direction), (webkit moz));
+  @include prefix((animation-direction: $direction), (webkit moz ms));
 }
 
 @mixin animation-fill-mode($fill-mode) {
-  @include _prefix((animation-fill-mode: $fill-mode), (webkit moz));
+  @include prefix((animation-fill-mode: $fill-mode), (webkit moz ms));
 }
 
 @mixin animation-play-state($play-state) {
-  @include _prefix((animation-play-state: $play-state), (webkit moz));
+  @include prefix((animation-play-state: $play-state), (webkit moz ms));
 }
 
-
 // == Animation + keyframes
-// --------------------------------------------------
+// ------------------------------------------------------------
 // IMPORTANT: using these mixins with autoprefixer is rather pointless as autoprefixer itself will do its job.
 // The mixins give more control over prefixed properties and supported browsers. Anyways, even with autoprefixer,
 // it will save time for defining all animation properties.
@@ -210,17 +321,17 @@
 // @param $play-state (running|paused) - whether the animation is initially running or paused
 // @param $create-class (false|true|string) - whether to create class name for element: false: no, true: create classname same as animation name, string: name for the class
 // Animation shorthand: animation-name animation-duration animation-timing-function animation-delay animation-iteration-count <animation-direction> <animation-fill-mode> <animation-play-state>
-@mixin _animate($name: null, $duration: 5s, $timing-function: linear, $delay: 0s, $iterations: infinite, $direction: normal, $fill-mode: none, $play-state: running, $create-class: false) {
+@mixin animate($name: null, $duration: 5s, $timing-function: linear, $delay: 0s, $iterations: infinite, $direction: normal, $fill-mode: none, $play-state: running, $create-class: false) {
   @if ($create-class == true and $name != null) { // Create class from animation name.
     .#{$name} {
-      @include _animate($name, $duration, $timing-function, $delay, $iterations, $direction, $fill-mode, $play-state, $create-class: false)
+      @include animate($name, $duration, $timing-function, $delay, $iterations, $direction, $fill-mode, $play-state, $create-class: false)
     }
   } @else if (type-of($create-class) == string) { // Create class from given string.
     .#{$create-class} {
-      @include _animate($name, $duration, $timing-function, $delay, $iterations, $direction, $fill-mode, $play-state, $create-class: false)
+      @include animate($name, $duration, $timing-function, $delay, $iterations, $direction, $fill-mode, $play-state, $create-class: false)
     }
   } @else { // Ment to be included within selector.
-    @include _prefix((
+    @include prefix((
         animation-name: #{$name},
         animation-duration: #{$duration},
         animation-timing-function: #{$timing-function},
@@ -229,16 +340,16 @@
         animation-direction: #{$direction},
         animation-fill-mode: #{$fill-mode},
         animation-play-state: #{$play-state}
-      ), (webkit moz));
+      ), (webkit moz ms));
 
     // Animation shorthand (for first five properties)
-    // @include _prefix((animation: #{$name} #{$duration} #{$timing-function} #{$delay} #{$iterations}), (webkit moz));
+    // @include prefix((animation: #{$name} #{$duration} #{$timing-function} #{$delay} #{$iterations}), (webkit moz));
     // Separate declarations for direction, fill mode and play state
-    // @include _prefix((
+    // @include prefix((
     //     animation-direction: #{$direction},
     //     animation-fill-mode: #{$fill-mode},
     //     animation-play-state: #{$play-state}
-    //   ), (webkit moz));
+    //   ), (webkit moz ms));
   }
 }
 
@@ -246,7 +357,7 @@
 // Create keyframes for animation.
 // @param $name (string) - keyframes (and animation) name (no spaces)
 // @param $vendors (map) - sass map of browsers to support (actually prefixes w/out dashes for each one of them).
-@mixin _keyframes($name, $vendors) {
+@mixin keyframes($name, $vendors) {
   @if (length($vendors) > 0) {
     @at-root {
       @if (map-get($vendors, moz) == true) {
@@ -300,38 +411,38 @@ $_vendor-prefixes: null !global;
 
 // == Usage
 // Keyframes for all examples
-// @include _keyframes(test, $_vendors) {
+// @include keyframes(test, $_vendors) {
 //   0% {
 //     opacity: 0;
 //     background-color: #c0c0c0;
-//     @include _prefix((transform: scale(0)), $_vendor-prefixes);
+//     @include prefix((transform: scale(0)), $_vendor-prefixes);
 //   }
 //   50% {
 //     opacity: .5;
 //     background-color: #ffa500;
-//     @include _prefix((transform: scale(1), filter: grayscale(25)), $_vendor-prefixes);
+//     @include prefix((transform: scale(1), filter: grayscale(25)), $_vendor-prefixes);
 //   }
 //   100% {
 //     opacity: 1;
 //     background-color: lighten(#ffa500,10%);
-//     @include _prefix((transform: scale(0), filter: grayscale(0)), $_vendor-prefixes);
+//     @include prefix((transform: scale(0), filter: grayscale(0)), $_vendor-prefixes);
 //   }
 // };
 //
 // Usage example 01: include all animation properties for a class within a rule-set
 // Default values, defined animation name, modified duration and timing function
 // .example-01 {
-//   @include _animate(test, 10s, ease-in-out);
+//   @include animate(test, 10s, ease-in-out);
 //   // Declarations which have nothing to do with animation itself.
 //   border-color: rgba(#000,.0625);
 // }
 //
 // Usage example 02: create class with all animation properties within a single rule-set
 // Default values, defined animation name, modified duration and timing function, defined a general usage class with all animation properties.
-// @include _animate(test, 10s, ease-in-out, $create-class: 'example-02');
+// @include animate(test, 10s, ease-in-out, $create-class: 'example-02');
 //
 // Usage example 03: create reusable general usage classes (one for common animation properties and one for specific animation properties)
 // Default values w/out animation name, modified duration and timing function, defined general usage class name.
-// @include _animate($duration: 10s, $timing-function: ease-in-out, $create-class: animated);
+// @include animate($duration: 10s, $timing-function: ease-in-out, $create-class: animated);
 // Defined animation name, `null` for excluded properties, modified timing function, $create-class: true (creates class name from animation name)
-// @include _animate(test, null, ease-in-out, null, null, null, null, null, true);
+// @include animate(test, null, ease-in-out, null, null, null, null, null, true);

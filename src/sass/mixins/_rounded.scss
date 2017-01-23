@@ -1,14 +1,44 @@
 // == Rounded element
-@mixin rounded($dimension: 1.5em, $bg-color: transparent, $brd: 0 none, $txt-shadow: none, $shadow: none, $font-size: inherit) {
-  width: $dimension;
-  height: $dimension;
-  padding: 0;
-  text-align: center;
-  line-height: $dimension;
+// Basic usage assumes specifying only diameter and background color though only diameter is required.
+// It creates a circle shaped element of given diameter and background color (if specified) with centered text,
+// line height equal to diameter (as such elements tend to be one-liners) and padding beeing reset to 0.
+// If more advanced control over appearance is needed, the mixin can be called with all parameters - most of them
+// have `null` as default value to prevent unnecessary/redundant css.
+// TODO: automatic `line-height` calculation based on `diameter` & `padding` even if there are separate padding values.
+// PREVIOUS DEFAULTS: 1.5em, transparent, inherit, 1, 0, (0 none), none, none, center
+// @param $diameter (number|length) - size of the circle: unitless or css length, unitless is converted to px
+// @param $bg-color (color|null) [null] - background color for the circle, any css value or sass color function
+// @param $font-size (number|size|inherit|null) [null] - font size of the circle text, unitless is converted to px
+// @param $line-height (number|length|inherit|null) [$diameter] - line height for the element
+// @param $padding (length|list|null) [0] - circle padding, single value or sass list of values for separate paddings.
+// @param $border (width|string|color|list|null) [null] - optional border width, style or shorthand (sass list) for circle.
+// @param $txt-shadow (shadow|none|list|null) [null] - optional text shadow or sass list of shadows for circle text.
+// @param $box-shadow (shadow|none|list|null) [null] - optional box shadow or sass list of shadows for circle.
+// @param $text-align (string|null) [center] - text alignment for circle text (valid css value).
+@mixin rounded($diameter, $bg-color: null, $font-size: null, $line-height: $diameter, $padding: 0, $border: null, $txt-shadow: null, $box-shadow: null, $text-align: center) {
+  @if unitless($diameter) { $diameter: $diameter*1px; }
+  @if ($font-size != null and $font-size != 'inherit' and unitless($font-size)) { $font-size: $font-size*1px; }
   background-color: $bg-color;
-  border: $brd;
-  border-radius: 50%;
-  box-shadow: $shadow;
-  text-shadow: $txt-shadow;
+  border: $border;
+  @include border-radius(50%);
+  @include box-shadow($box-shadow);
   font-size: $font-size;
+  height: $diameter;
+  line-height: $line-height;
+  width: $diameter;
+  padding: $padding;
+  text-align: $text-align;
+  text-shadow: $txt-shadow;
 }
+
+// == Usage
+// .example-01 { // basic
+//   @include rounded(8em, maroon);
+// }
+// .example-02 { // advanced
+//   @include rounded(120px, #008080, inherit, 120px-19px*2, (15px 10px), (4px solid darken(#008080, 15%)), (1px 1px 0 #000), ( 0 0 5px #008080));
+// }
+// .example-03 { // advanced
+//   @include rounded(120, transparent, 1.2em, 120px, 0, (0 none), none, (0 0 5px 1px #000));
+//   color: #333;
+// }

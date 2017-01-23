@@ -1,0 +1,34 @@
+// == 'Retina' media query for 2x-sized background images on high-resolution devices (use image scaled 2 times).
+// @param $img (string|list) - image or space separated sass list of images
+// @param $path (string|null) [null] - path to images location ending with slash (may be part of URL), null is used in case if there is a need to specify paths or URLs for particular images separately (in that case path for each images should be included in `$img` as part of the name of each image)
+// Usage examples:
+// .single-bg { @include image-2x('01@2x.jpg', '../images/'); } // Single background image with defined path.
+// .multiple-bgs-same-path { @include image-2x('01@2x.jpg' '02@2x.jpg' '03@2x.jpg', '../images/'); } // Multiple background images with one defined path.
+// .multiple-bgs-different-locations { @include image-2x('01/01@2x.jpg' '../02/02@2x.jpg' 'http://some/url/03@2x.jpg'); } // Multiple background images with different locations.
+
+@mixin image-2x($img, $path: null) {
+  $images: (); // Initiate empty list with background images URLs.
+  @each $i in $img { // Join each image with path and wrap in `url('')`.
+    $images: append($images, url('#{$path}#{$i}'), comma); // Append images URLs to the list.
+  }
+
+  // only screen and (-webkit-min-device-pixel-ratio: 1.25),
+  // only screen and (min-device-pixel-ratio: 1.25),
+  // only screen and (min-resolution: 120dpi),
+  // only screen and (min-resolution: 1.25dppx),
+  // only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  // only screen and (min-device-pixel-ratio: 1.5),
+  // only screen and (min-resolution: 144dpi),
+  // only screen and (min-resolution: 1.5dppx),
+  // only screen and (-webkit-min-device-pixel-ratio: 2),
+  // only screen and (min-device-pixel-ratio: 2),
+  // only screen and (min-resolution: 192dpi),
+  // only screen and (min-resolution: 2dppx)
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
+  only screen and (min-device-pixel-ratio: 1.3),
+  only screen and (min-resolution: 124.8dpi),
+  only screen and (min-resolution: 1.3dppx) {
+    background-image: $images;
+  }
+}

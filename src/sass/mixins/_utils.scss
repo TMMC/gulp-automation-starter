@@ -15,7 +15,8 @@
 
   &:before,
   &:after {
-    content: " ";    // 1
+    // content: " ";    // 1
+    content: "";
     // display: block;
     display: table;  // 2
   }
@@ -78,11 +79,30 @@
   @include text-hide();
 	overflow: hidden;
 	// *text-indent: -9999px; /* IE 6/7 fallback */
+
+  // Version with background image
+  // &:before {
+    // 	 background-image: url(pathtoimage.png);
+    // 	 background-position: 0 0;
+    // 	 background-repeat: no-repeat;
+    // 	 content: "";
+    // 	 display: block;
+    // 	 width: 0;
+    // 	 height: 0;
+  // }
+  // 	 width: 0;
+  // 	 height: 0;
+
+  // Version with image as pseudoelement
+  // .ir:before {
+  //   content: url(pathtoimage.png);
+  // }
 }
 
 // == Font face
 // --------------------------------------------------
 // Generates font-face declaration for multiple file formats.
+// Not sure if this is convenience in case of this mixin.
 // @param $font-family (string) - font family name
 // @param $font-path (string) - path to font files location ending with slash
 // @param $font-file-name (string) - font file name (basename w/out extension)
@@ -92,7 +112,7 @@
 // @param $text-rendering (auto|optimizeSpeed|optimizeLegibility|geometricPrecision|null) - font optimization when rendering text, default `null`
 // @param $font-formats (map) - sass map of font formats and extensions to use [font extension: font format string]
 
-@mixin _font-face($font-family, $font-path, $font-file-name, $font-style: normal, $font-weight: normal, $font-svg-id: null, $text-rendering: null, $font-formats: (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, otf: opentype, svg: svg)) {
+@mixin font-face($font-family, $font-path, $font-file-name, $font-style: normal, $font-weight: normal, $font-svg-id: null, $text-rendering: null, $font-formats: (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, otf: opentype, svg: svg)) {
   $font-src: (); // Initiate empty list with values for `src` property.
 
   @each $font-ext, $font-format in $font-formats { // Loop through font formats.
@@ -120,9 +140,9 @@
 }
 
 // Usage example 01: all font formats, normal font style and weight, given id for svg format, text rendering set to auto
-// @include _font-face('sample-font-family', 'sample/path/to/', 'font-file-regular', normal, normal, 'font-regular-id', auto, (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, otf: opentype, svg: svg));
+// @include font-face('sample-font-family', 'sample/path/to/', 'font-file-regular', normal, normal, 'font-regular-id', auto, (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, otf: opentype, svg: svg));
 // Usage example 02: same font family as above, no open type format, font style set to italic, font weight set to bold, no id for svg format, no text rendering
-// @include _font-face('sample-font-family', 'sample/path/to/', 'font-file-bold-italic', italic, bold, null, null, (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, svg: svg));
+// @include font-face('sample-font-family', 'sample/path/to/', 'font-file-bold-italic', italic, bold, null, null, (eot: embedded-opentype, woff2: woff2, woff: woff, ttf: truetype, svg: svg));
 
 // == Font size in rems
 // $el-font-size: int (unitless font size in pixels, default: 16)
@@ -139,7 +159,7 @@
 // @param $bottom (length) - bottom offset, default null (ommited)
 // @param $right (length) - right offset, default null (ommited)
 // @param $z-index (int) - position in stack, default null (ommited)
-@mixin _position($type, $top: null, $left: null, $bottom: null, $right: null, $z-index: null) {
+@mixin position($type, $top: null, $left: null, $bottom: null, $right: null, $z-index: null) {
   position: $type;
   top: $top;
   bottom: $bottom;
@@ -152,7 +172,7 @@
 // @param $width (length) - width of an element
 // @param $height (length) - height of an element
 // Defaults to square (width = height), unitless values are converted to px
-@mixin _size($width, $height: $width) {
+@mixin size($width, $height: $width) {
   @if unitless($width) { $width: $width*1px; }
   @if unitless($height) { $height: $height*1px; }
   width: $width;
@@ -163,7 +183,7 @@
 // --------------------------------------------------
 
 // == Center block elements horizontally
-@mixin _center-block() {
+@mixin center-block() {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -178,23 +198,23 @@
 //   position: relative; // relative|absolute|fixed
 //
 //   .centered-child {
-//     @include _center-in-viewport();
+//     @include center-in-viewport();
 //   }
 // }
 
-@mixin _center-in-viewport($orientation: null) {
+@mixin center-in-viewport($orientation: null) {
   position: absolute;
 
   @if ($orientation == 'h') { // Center only horizontally.
     left: 50%;
-    @include _prefix(transform: translateX(-50%), (webkit moz ms));
+    @include prefix(transform: translateX(-50%), (webkit moz ms));
   } @else if ($orientation == 'v') { // Center only vertically.
     top: 50%;
-    @include _prefix(transform: translateY(-50%), (webkit moz ms));
+    @include prefix(transform: translateY(-50%), (webkit moz ms));
   } @else { // Center both horizontally and vertically.
     top: 50%;
     left: 50%;
-    @include _prefix(transform: translate(-50%, -50%), (webkit moz ms));
+    @include prefix(transform: translate(-50%, -50%), (webkit moz ms));
   }
 }
 
@@ -227,7 +247,7 @@
 
   // Pseudo-element: 'ghost element' essential for centering.
   &:before {
-    content: " ";
+    content: "";
     display: inline-block;
     height: 100%;
     vertical-align: middle;

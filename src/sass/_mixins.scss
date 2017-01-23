@@ -3,12 +3,13 @@
 // @import 'mixins/mixin-name';
 
 // Base
+@import 'mixins/css3-patches';
 @import 'mixins/utils';
-@import 'mixins/polyfills';
 
-// Polyfills dependent
+// Depending on CSS3 Patches
 @import 'mixins/rounded';
 @import 'mixins/bg-image-variants';
+@import 'mixins/retina-image-2x';
 @import 'mixins/gradients';
 @import 'mixins/parallax';
 

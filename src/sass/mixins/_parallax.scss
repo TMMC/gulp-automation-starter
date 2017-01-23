@@ -1,9 +1,9 @@
 // == Parallax images
-@mixin parallax() {
+@mixin parallax($max-width: $grid-float-breakpoint-max) {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
-  @media (max-width: $grid-float-breakpoint-max) {
+  @media (max-width: $max-width) {
     body & {
       background-position: 50% 50% !important;
     }

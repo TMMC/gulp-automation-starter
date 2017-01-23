@@ -45,7 +45,7 @@
       background-image: -o-radial-gradient(center, ellipse cover, $start-color $start-pos, $end-color $end-pos);
       background-image: radial-gradient(ellipse at center, $start-color $start-pos, $end-color $end-pos);
       background-repeat: no-repeat;
-      @include _prefix((background-size: cover), (webkit moz o));
+      @include prefix((background-size: cover), (webkit moz ms o));
     }
 }
 
@@ -64,5 +64,5 @@
   background-image: linear-gradient(to right, rgba($color, $color-opacity) $gap-start, rgba($color, 0) $gap-start, rgba($color, 0) $gap-end, rgba($color, $color-opacity) $gap-end);
   background-repeat: no-repeat;
   background-position: 0 0;
-  @include _prefix((background-size: #{$line-size}), (webkit moz o));
+  @include prefix((background-size: #{$line-size}), (webkit moz ms o));
 }
