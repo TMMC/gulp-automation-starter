@@ -207,14 +207,14 @@
 
   @if ($orientation == 'h') { // Center only horizontally.
     left: 50%;
-    @include prefix(transform: translateX(-50%), (webkit moz ms));
+    @include prefix((transform: translateX(-50%)), (webkit moz ms));
   } @else if ($orientation == 'v') { // Center only vertically.
     top: 50%;
-    @include prefix(transform: translateY(-50%), (webkit moz ms));
+    @include prefix((transform: translateY(-50%)), (webkit moz ms));
   } @else { // Center both horizontally and vertically.
     top: 50%;
     left: 50%;
-    @include prefix(transform: translate(-50%, -50%), (webkit moz ms));
+    @include prefix((transform: translate(-50%, -50%)), (webkit moz ms));
   }
 }
 

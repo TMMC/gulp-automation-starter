@@ -134,6 +134,22 @@
       "/*! <%= filename %> • <%= new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() %> */\n"
     ]
   },
+  "mainJsParts": {
+    "variables.js": true,
+    "chkjs.js": true,
+    "cookies.js": true,
+    "parallax.js": false,
+    "onepagenav.js": true,
+    "backtotop.js": true,
+    "flexslider.js": false,
+    "slickslider.js": false,
+    "jssorslider.js": false,
+    "colorbox.js": false,
+    "bootstrap.js": true,
+    "livereload.js": false,
+    "scrollers.js": true,
+    "various.js": true
+  },
   "twbsJs": {
     "transition.js": true,
     "alert.js": true,

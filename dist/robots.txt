@@ -1,3 +1,8 @@
+# www.robotstxt.org
+
+# Allow crawling of all content
 User-agent: *
+
+# Disallow crawling of all content
 Disallow: /*.htaccess
 Disallow: /cgi-bin/

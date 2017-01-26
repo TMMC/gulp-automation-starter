@@ -1,4 +1,4 @@
-/*! styleguide.css • 2016-11-16 */
+/*! styleguide.css • 2017-1-26 */
 body {
   padding-top: 50px;
   position: relative;
@@ -216,7 +216,7 @@ textarea.form-control {
 
 .sg-section [class^="bg-"] {
   padding: 5px;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 #sg-masthead h1 {

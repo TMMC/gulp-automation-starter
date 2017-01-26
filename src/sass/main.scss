@@ -5,8 +5,8 @@
 @import 'variables';
 @import 'mixins';
 
-// == Partials (in order as below)
-// @import 'animate';
+// == Partials (in the exact order as below)
+@import 'animate';
 @import 'bootstrap';
 @import 'fontawesome/font-awesome';
 @import 'lato-font';
@@ -14,7 +14,7 @@
 @import 'fonts';
 // @import 'colorbox';
 // @import 'jssor-slider';
-@import 'flexslider';
-@import 'slick';
+// @import 'flexslider';
+// @import 'slick';
 @import 'base';
 @import 'styles';

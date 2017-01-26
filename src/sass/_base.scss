@@ -213,7 +213,8 @@ h3, .h3 {
 }
 
 // Icons
-.#{$font-icon-primary-prefix} { // Catchall baseclass
+.#{$font-icon-primary-prefix},
+.#{$font-icon-secondary-prefix} { // Catchall baseclass
   display: inline-block;
   font-family: $font-icon-primary;
   font-size: inherit;

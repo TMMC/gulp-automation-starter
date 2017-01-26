@@ -232,7 +232,9 @@ gulp.task('compile-js', function() {
     // cfg.dirs.comps + '/slick-carousel/slick/slick.js',
     // cfg.dirs.comps + '/flex-slider/jquery.flexslider.js',
     // cfg.dirs.comps + '/stellar/jquery.stellar.js',
-    '!' + cfg.dirs.srcJsPlugins + '/chkjs.js'                   // Exclude as jQuery is used to do it
+    '!' + cfg.dirs.srcJsPlugins + '/gmaps.js',                 // Exclude in this case
+    '!' + cfg.dirs.srcJsPlugins + '/fbsdk.js',                 // Exclude in this case
+    '!' + cfg.dirs.srcJsPlugins + '/chkjs.js'                  // Exclude if jQuery is used to do it
   ]);
 
   // Create array of streams for Bootstrap JS
@@ -353,7 +355,7 @@ gulp.task('optimize-img', function(){
 // == browser-sync task: start the built-in server & watch files triggering page reload
 gulp.task('browser-sync', function() {
   bs.init({
-    browser: ["opera"],  // ["firefox", "google chrome", "opera", "vivaldi"]
+    browser: ["firefox"],  // ["firefox", "google chrome", "opera", "vivaldi"]
     files: [
       cfg.dirs.distBase + '/*.{html,htaccess,php}',
       cfg.dirs.distCss + '/*.css',

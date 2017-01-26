@@ -7,10 +7,12 @@
 //
 // Load core variables and mixins
 // --------------------------------------------------
-
+@import "../variables";
 @import "variables";
+@import "../fontawesome/variables";
 @import "mixins";
-
+@import "../mixins";
+@import "../fontawesome/mixins";
 
 //
 // Buttons

@@ -1,4 +1,4 @@
-/*! styleguide.js • 2016-11-16 */
+/*! styleguide.js • 2017-1-26 */
 
 
 /*!
